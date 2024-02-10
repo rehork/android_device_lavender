@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2022 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+
+<!-- These resources are around just to allow their values to be customized
+     for different hardware and product builds.  Do not translate.
+
+     NOTE: The naming convention is "config_camelCaseValue". Some legacy
+     entries do not follow the convention, but all new entries should. -->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- boolean indicating whether the WiFi chipset has 5GHz band support.
+         Note: This config is replacing the config_wifi_dual_band_support
+         since more bands may now be supported (such as 6GHz), the naming dual_band
+         is no longer indicative, and a separate config now exists for each band -->
+    <bool name="config_wifi5ghzSupport" translatable="false">true</bool>
+
+    <!-- List of allowed channels in 2GHz band for softap. If the device doesn't want to restrict
+         channels this should be empty. Values is a comma separated channel string and/or channel
+         range string like '1-6,11'. -->
+    <string name="config_wifiSoftap2gChannelList" translatable="false" />
+    <!-- List of allowed channels in 5GHz band for softap. If the device doesn't want to restrict
+         channels this should be empty. Values is a comma separated channel string and/or channel
+         range string like '36-48,149'. -->
+    <string name="config_wifiSoftap5gChannelList" translatable="false" />
+
+    <!-- Boolean indicating whether 802.11r Fast BSS Transition is enabled on this platform -->
+    <bool name="config_wifi_fast_bss_transition_enabled" translatable="false">true</bool>
+
+    <!-- Boolean indicating whether the wifi chipset supports background scanning mechanism.
+         This mechanism allows the host to remain in suspend state and the dongle to actively
+         scan and wake the host when a configured SSID is detected by the dongle. This chipset
+         capability can provide power savings when wifi needs to be always kept on. -->
+    <bool name="config_wifi_background_scan_support" translatable="false">true</bool>
+
+    <!-- Configure wifi tcp buffersizes in the form:
+         rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
+    <string name="config_wifi_tcp_buffers" translatable="false">524288,2097152,8388608,262144,524288,4194304</string>
+
+    <!-- Wifi driver supports Automatic channel selection (ACS) for softap -->
+    <bool name="config_wifi_softap_acs_supported" translatable="false">false</bool>
+
+    <!-- Wifi driver supports IEEE80211AC for softap -->
+    <bool name="config_wifi_softap_ieee80211ac_supported" translatable="false">true</bool>
+
+    <!-- Indicates that connected MAC randomization is supported on this device -->
+    <bool name="config_wifi_connected_mac_randomization_supported" translatable="false">true</bool>
+
+    <!-- Indicates that p2p MAC randomization is supported on this device -->
+    <bool name="config_wifi_p2p_mac_randomization_supported" translatable="false">true</bool>
+
+    <!-- Indicates that AP mode MAC randomization is supported on this device -->
+    <bool name="config_wifi_ap_mac_randomization_supported" translatable="false">true</bool>
+
+    <!-- Indicates that wifi link probing is supported on this device -->
+    <bool name="config_wifi_link_probing_supported" translatable="false">true</bool>
+
+    <!-- Default access point SSID used for tethering -->
+    <string name="wifi_tether_configure_ssid_default" translatable="false">Redmi Note 7</string>
+
+    <!-- Integer indicating maximum hardware supported client number of soft ap -->
+    <integer name="config_wifiHardwareSoftapMaxClientCount" translatable="false">32</integer>
+
+    <!-- Indicate the driver support NL80211_REG_CHANGED event. -->
+    <bool name="config_wifiDriverSupportedNl80211RegChangedEvent" translatable="false">true</bool>
+</resources>
