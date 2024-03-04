@@ -10,6 +10,11 @@
     <!-- List of ID of auxiliary cameras that must be ignored by the app. -->
     <string-array name="config_ignoredAuxCameraIds">
         <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
     </string-array>
 
     <!-- An array of triplets made of (camera ID, qualities, framerates).
@@ -37,8 +42,7 @@
     -->
     <string-array name="config_additionalVideoConfigurations">
         <!-- No additional configuration is added by default. -->
-        <item>0</item> <item>sd|hd|fhd</item>     <item>60</item>
-        <item>1</item> <item>sd|hd|fhd</item>     <item>60</item>
+        <item>0</item> <item>sd|hd|fhd|uhd</item>     <item>60</item>  <!-- main -->
+        <item>1</item> <item>sd|hd|fhd</item>     <item>60</item> <!-- front -->
     </string-array>
-
 </resources>
