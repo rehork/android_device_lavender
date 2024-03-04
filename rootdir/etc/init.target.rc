@@ -28,6 +28,8 @@
 #
 
 on init
+    # Alarm
+    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
     write /dev/stune/foreground/schedtune.prefer_idle 1
     write /dev/stune/top-app/schedtune.boost 5
@@ -106,14 +108,12 @@ on post-fs
     wait_for_prop vendor.sys.listeners.registered true
     write /dev/ipa 1
 
-on init
-    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
-
 on post-fs-data
     mkdir /data/tombstones/modem 0771 system system
     mkdir /data/tombstones/lpass 0771 system system
     mkdir /data/tombstones/wcnss 0771 system system
     mkdir /data/tombstones/dsps 0771 system system
+    mkdir /data/vendor/misc/seemp 0700 system system
 
 on boot
     start vendor.rmt_storage
@@ -274,9 +274,9 @@ on charger
     write /sys/class/leds/red/brightness 255
 
 service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
-     class main
-     user root
-     group system wakelock
+    class main
+    user root
+    group system wakelock
 
 on property:vendor.post_boot.parsed=1
     # tune blkio

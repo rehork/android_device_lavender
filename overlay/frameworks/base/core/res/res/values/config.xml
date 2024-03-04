@@ -327,6 +327,12 @@
         <item>0:2:15</item> <!-- ID0:Fingerprint:Strong -->
     </string-array>
 
+    <!-- The list of components which should be automatically disabled for a specific device. -->
+    <string-array name="config_deviceDisabledComponents" translatable="false">
+        <item>com.google.android.gms/com.google.android.gms.nearby.messages.service.NearbyMessagesService</item>
+        <item>com.google.android.gms/com.google.android.gms.nearby.discovery.service.DiscoveryService</item>
+    </string-array>
+
     <!-- If not zero, limits the internal screen recorder's framerate to the set value. -->
     <integer name="config_screenRecorderMaxFramerate">60</integer>
 
@@ -355,6 +361,9 @@
          As of Honeycomb, blurring is not supported anymore. -->
     <bool name="config_sf_slowBlur">false</bool>
 
+    <!-- Default component for QR code scanner -->
+    <string name="config_defaultQrCodeComponent">org.lineageos.aperture/.QrScannerActivity</string>
+
     <!-- Delay that allows some content to arrive at the display before switching
          from DOZE to ON, in millis. -->
     <integer name="config_wakeUpDelayDoze">32</integer>
@@ -365,11 +374,4 @@
     <!-- List of comma separated package names for which we the system will not show crash like
          tts, etc. dialogs. -->
     <string name="config_appsNotReportingCrashes">com.google.android.tts</string>
-
-  <!-- Disable this if your device does not support input_suspend or charging_enabled -->
-    <bool name="config_deviceHasBatteryLifeSaver">true</bool>
-    <!-- Use /sys/class/power_supply/battery/charging_enabled with inverted values for old devices-->
-    <string name="config_batteryLifeSaverSysfsNode" translatable="false">/sys/class/power_supply/battery/charging_enabled</string>
-    <string name="config_batteryLifeSaverSysfsNodeStopValue" translatable="false">0</string>
-    <string name="config_batteryLifeSaverSysfsNodeStartValue" translatable="false">1</string>
 </resources>

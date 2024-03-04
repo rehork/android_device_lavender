@@ -39,4 +39,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     vibrator is capable of subtle vibrations -->
     <bool name="config_vibrateOnIconAnimation">true</bool>
 
+ <!-- Doze: check proximity sensor before pulsing? -->
+    <bool name="doze_proximity_check_before_pulse">false</bool>
+
 </resources>
