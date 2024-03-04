@@ -34,12 +34,11 @@ ro.boot.fp.                             u:object_r:hal_fingerprint_prop:s0
 ro.boot.fpsensor                        u:object_r:hal_fingerprint_prop:s0
 sys.fp.                                 u:object_r:hal_fingerprint_prop:s0
 
+# FM
+ro.vendor.fm.use_audio_session	        u:object_r:exported_system_prop:s0
+
 # Media
 gpu.stats.debug.level                   u:object_r:vendor_default_prop:s0
-
-# Mlipay
-persist.vendor.sys.pay.                 u:object_r:mlipay_prop:s0
-persist.vendor.sys.provision.status     u:object_r:mlipay_prop:s0
 
 # Power
 vendor.powerhal.                        u:object_r:vendor_power_prop:s0

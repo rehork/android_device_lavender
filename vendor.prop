@@ -86,6 +86,7 @@ persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxhd-aac
 
 # Camera
 persist.vendor.camera.preview.ubwc=0
+ro.camera.sound.forced=0
 vendor.video.disable.ubwc=1
 vidc.enc.dcvs.extra-buff-count=2
 persist.vendor.camera.preview.ubwc=0
@@ -105,7 +106,7 @@ debug.mdpcomp.logs=0
 debug.sf.enable_egl_image_tracker=true
 debug.sf.predict_hwc_composition_strategy=0
 debug.sf.enable_transaction_tracing=false
-debug.sf.auto_latch_unsignaled=false
+debug.sf.auto_latch_unsignaled=0
 debug.sf.disable_client_composition_cache=1
 debug.sf.hw=0
 ro.hardware.egl=adreno
@@ -119,6 +120,7 @@ vendor.display.use_smooth_motion=1
 vendor.gralloc.enable_fb_ubwc=1
 vendor.display.disable_rotator_downscale=1
 vendor.display.disable_scaler=0
+ro.surface_flinger.enable_frame_rate_override=false
 
 # Disable vsync for cpu rendered apps
 debug.cpurend.vsync=false

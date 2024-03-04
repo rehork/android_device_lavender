@@ -79,7 +79,7 @@
             <instance>sigmahal</instance>
         </interface>
    </hal>
-    <hal format="native" optional="false">
+   <hal format="native" optional="false">
         <name>netutils-wrapper</name>
         <!--
             netutils-wrapper should only list a single version x.0.

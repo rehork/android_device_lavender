@@ -1,5 +1,7 @@
 allow untrusted_app sysfs_battery_supply:dir { search };
 dontaudit untrusted_app virtual_ab_prop:file { read };
+allow untrusted_app tmpfs:lnk_file { read };
+allow untrusted_app sysfs:dir r_dir_perms;
 
 dontaudit untrusted_app_27 app_data_file:file { execute  execute_no_trans };
 
@@ -11,6 +13,6 @@ dontaudit untrusted_app_29 vendor_persist_camera_prop:file { read };
 
 allow untrusted_app vendor_persist_camera_prop:file { read };
 allow untrusted_app app_data_file:file { execute };
-allow untrusted_app proc_zoneinfo:file { read };
+allow untrusted_app proc_zoneinfo:file r_file_perms;
 allow untrusted_app vendor_persist_camera_prop:file { read };
 allow untrusted_app zygote:unix_stream_socket { getopt };

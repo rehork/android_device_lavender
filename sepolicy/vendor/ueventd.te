@@ -1,3 +1,4 @@
+r_dir_file(ueventd, metadata_file);
 allow ueventd kcal_dev:dir r_dir_perms;
 allow ueventd kcal_dev:file rw_file_perms;
 allow ueventd kcal_dev:lnk_file r_file_perms;

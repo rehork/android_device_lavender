@@ -3,12 +3,17 @@ vendor.bluetooth.soc=cherokee
 
 # Blur
 ro.surface_flinger.supports_background_blur=0
+persist.sys.sf.disable_blurs=1
+ro.sf.blurs_are_expensive=1
 
 # CNE
 persist.vendor.cne.feature=1
 
 # Deep Sleep
 pm.sleep_mode=1
+
+# Logs
+persist.log.tag.OpenGLRenderer=S
 
 # Netflix
 ro.netflix.bsp_rev=Q660-13149-1
@@ -25,4 +30,7 @@ ro.audio.soundfx.dirac=true
 persist.dirac.acs.controller=qem 
 persist.dirac.acs.ignore_error=1 
 persist.dirac.acs.storeSettings=1
-#persist.audio.dirac.speaker=true 
+persist.audio.dirac.speaker=true 
+
+# Telephony
+ro.telephony.handle_audio_direction_changes_between_call_state_changes=false
