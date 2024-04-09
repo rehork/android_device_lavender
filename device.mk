@@ -114,6 +114,10 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
+    android.hardware.bluetooth.audio@2.0-impl \
+    android.hardware.bluetooth.audio@2.1-impl \
+    android.hardware.bluetooth.a2dp@1.0 \
+    android.hardware.bluetooth.a2dp@1.0.vendor \
     android.hardware.bluetooth.audio-impl \
     audio.bluetooth.default \
     android.hardware.bluetooth@1.0.vendor \
@@ -121,7 +125,9 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth LDAC
 PRODUCT_PACKAGES += \
-    libldacBT_bco
+    libldacBT_bco \
+    libldacBT_abr \
+    libldacBT_enc 
 
 
 PRODUCT_PACKAGES += \
@@ -208,7 +214,8 @@ PRODUCT_PACKAGES += \
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.3.vendor \
-    android.hardware.drm-service.clearkey
+    android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.0-service
 
 PRODUCT_PACKAGES += \
     android.hardware.broadcastradio@1.0-impl
@@ -387,7 +394,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.2.vendor \
+    android.hardware.power@1.3.vendor \
     android.hardware.power-service.xiaomi-libperfmgr
 
 # Powerhint
