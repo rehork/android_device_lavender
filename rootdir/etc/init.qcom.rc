@@ -33,29 +33,10 @@ import /vendor/etc/init/hw/init.qcom.test.rc
 import /vendor/etc/init/hw/init.device.rc
 
 on early-init
-  # Remove some data cache
-    rm /data/resource-cache
-    rm /data/system/package_cache
-
-    mount tracefs tracefs /sys/kernel/tracing
-    chmod 0755 /sys/kernel/tracing
-
-  # Change ownership of hw_recovery related nodes
-    chown system graphics /sys/kernel/debug/dri/0/debug/dump
-    chown system graphics /sys/kernel/debug/dri/0/debug/recovery_reg
-    chown system graphics /sys/kernel/debug/dri/0/debug/recovery_dbgbus
-    chown system graphics /sys/kernel/debug/dri/0/debug/recovery_vbif_dbgbus
-
-    mount debugfs debugfs /sys/kernel/debug
-    chmod 0755 /sys/kernel/debug
-    chown system system /sys/kernel/debug
-
-    # Change ownership of sw_sync node
-    chown system graphics /sys/kernel/debug/sync/sw_sync
-    chmod 0666 /sys/kernel/debug/sync/sw_sync
-
     chown root system /dev/kmsg
     chmod 0620 /dev/kmsg
+    mount tracefs tracefs /sys/kernel/tracing
+    chmod 0755 /sys/kernel/tracing
 
 on init
 
@@ -70,32 +51,19 @@ on init
     chown root system /sys/fs/cgroup/memory/bg/tasks
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
     
-    # Mount cgroup mount point for cpu accounting
-    mount cgroup none /acct cpuacct
-
-    # Setup all the sub-system as related
-    write /sys/bus/msm_subsys/devices/subsys0/restart_level RELATED
-    write /sys/bus/msm_subsys/devices/subsys1/restart_level RELATED
-    write /sys/bus/msm_subsys/devices/subsys2/restart_level RELATED
-    write /sys/bus/msm_subsys/devices/subsys3/restart_level RELATED
-    write /sys/bus/msm_subsys/devices/subsys4/restart_level RELATED
-    write /sys/bus/msm_subsys/devices/subsys5/restart_level RELATED
-    write /sys/bus/msm_subsys/devices/subsys6/restart_level RELATED
-
-on post-fs
     write /sys/class/graphics/fb0/idle_time 100
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
     # Allow subsystem (modem etc) debugging
-    write /sys/kernel/debug/bootkpi/kpi_values "M - Start adsp"
+    #write /sys/kernel/debug/bootkpi/kpi_values "M - Start adsp"
     write /sys/kernel/boot_adsp/boot 1
     write /sys/kernel/boot_cdsp/boot 1
     write /sys/devices/virtual/npu/msm_npu/boot 1
     write /sys/kernel/boot_slpi/boot 1
     write /sys/devices/virtual/cvp/cvp/boot 1
-    exec u:r:qti_init_shell:s0 -- /vendor/bin/init.qcom.early_boot.sh
+    exec u:r:vendor_qti_init_shell:s0 -- /vendor/bin/init.qcom.early_boot.sh
 
     # for backward compatibility
     chown system system /persist/sensors
@@ -117,7 +85,6 @@ on early-boot
     chown system system /mnt/vendor/persist/sensors/registry/sns_reg_version
     chown system system /mnt/vendor/persist/sensors/registry/config
     chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
-
     chown system system /mnt/vendor/persist/data/pfm/licenses
     chmod 0775 /mnt/vendor/persist/data/pfm/licenses
 
@@ -132,8 +99,6 @@ on boot
     chown bluetooth bluetooth /sys/module/hci_smd/parameters/hcismd_set
     chown system system /sys/module/msm_core/parameters/polling_interval
     chown system system /sys/module/msm_core/parameters/disabled
-    chown system system /sys/kernel/debug/msm_core/enable
-    chown system system /sys/kernel/debug/msm_core/ptable
     chown system system /sys/kernel/boot_slpi/ssr
     chown system system /sys/module/radio_iris_transport/parameters/fmsmd_set
     chmod 0660 /sys/module/bluetooth_power/parameters/power
@@ -147,13 +112,6 @@ on boot
     chmod 0660 /dev/ttyHS0
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
-
-
-    # Enable qcrild and data services on boot so process starts in main
-    enable vendor.qcrild
-    enable vendor.qcrild2
-    enable vendor.dataqti
-    enable vendor.dataadpl
 
     chmod 0660 /dev/ttyHS2
     chown bluetooth bluetooth /dev/ttyHS2
@@ -170,9 +128,7 @@ on boot
     mkdir /persist/drm 0770 system system
     mkdir /mnt/vendor/persist/bluetooth 0770 bluetooth bluetooth
     mkdir /persist/misc 0770 system system
-    mkdir /persist/alarm 0770 system system
-    mkdir /mnt/vendor/persist/alarm 0777 system system
-    chmod 0666 /mnt/vendor/persist/alarm/data
+    mkdir /mnt/vendor/persist/alarm 0770 system system
     mkdir /mnt/vendor/persist/time 0770 system system
     mkdir /mnt/vendor/persist/secnvm 0770 system system
     mkdir /mnt/vendor/persist/iar_db 0770 system system
@@ -240,6 +196,9 @@ on boot
     # Create hvdcp_opti directory
     mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
 
+   # limit discard size to 128MB in order to avoid long IO latency
+    write /sys/block/sda/queue/discard_max_bytes 134217728
+
     #sensors log dir
     mkdir /data/vendor/sensors
     chown system system /data/vendor/sensors
@@ -268,7 +227,7 @@ on post-fs-data
 
     #Create folder of camera
     mkdir /data/vendor/camera 0770 camera camera
-
+    mkdir /data/misc/camera 0770 camera camera
 
     #Create directory for tftp
     mkdir /data/vendor/tombstones 0771 system system
@@ -284,7 +243,9 @@ on post-fs-data
     mkdir /data/vendor/wifi/hostapd 0770 wifi wifi
     mkdir /data/vendor/wifi/hostapd/ctrl 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa_supplicant 0770 wifi wifi
+    mkdir /data/vendor/wifi/wigig_hostapd 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa 0770 wifi wifi
+    mkdir /data/vendor/wlan_logs 0770 system wifi
     mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
 
     # Create the directories used by CnE subsystem
@@ -300,15 +261,14 @@ on post-fs-data
 
     # Create directory for radio
     mkdir /data/vendor/radio 0770 system radio
-    rm /data/vendor/radio/shmbus
 
     # Create directory for modem_config
     mkdir /data/vendor/modem_config 0570 radio root
 
     # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
     # We chown/chmod /persist again so because mount is run as root + defaults
-    chown root system /persist
-    chmod 0771 /persist
+    chown root system /mnt/vendor/persist/
+    chmod 0771 /mnt/vendor/persist/
     chown system system /persist/WCNSS_qcom_wlan_nv.bin
     chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
@@ -346,12 +306,15 @@ on post-fs-data
     mkdir /data/vendor/fm 0770 system system
     chmod 0770 /data/vendor/fm
 
-    #Create PERFD deamon related dirs
+  #Create PERFD deamon related dirs
     mkdir /data/vendor/perfd 0770 root system
     chmod 2770 /data/vendor/perfd
     rm /data/vendor/perfd/default_values
 
     mkdir /data/vendor/secure_element 0777 system system
+
+    #Create IOP  deamon related dirs
+    mkdir /data/vendor/iop 0700 root system
 
     # Mark the copy complete flag to not completed
     write /data/vendor/radio/copy_complete 0
@@ -369,6 +332,9 @@ on post-fs-data
     write /data/vendor/radio/db_check_done 0
     chown radio radio /data/vendor/radio/db_check_done
     chmod 0660 /data/vendor/radio/db_check_done
+
+    copy /vendor/etc/ad_calib.cfg /data/vendor/display/ad_calib.cfg
+    chmod 0644 /data/vendor/display/ad_calib.cfg
 
     # qti-logkit data
     mkdir /data/vendor/qti-logkit/ 0771 system system
@@ -399,11 +365,9 @@ on property:ro.vendor.iocgrp.config=1
     chown system system /dev/blkio
     chown system system /dev/blkio/tasks
     chmod 0664 /dev/blkio/tasks
-    mkdir /dev/blkio/bg 0755 system system
-    chown system system /dev/blkio/bg/tasks
-    chmod 0664 /dev/blkio/bg/tasks
-    write /dev/blkio/blkio.weight 1000
-    write /dev/blkio/bg/blkio.weight 100
+    mkdir /dev/blkio/background 0755 system system
+    chown system system /dev/blkio/background/tasks
+    chmod 0664 /dev/blkio/background/tasks
 
 on property:persist.sys.ssr.enable_debug=*
     write /sys/module/subsystem_restart/parameters/enable_debug ${persist.sys.ssr.enable_debug}
@@ -432,29 +396,16 @@ on property:persist.vendor.ssr.enable_ramdumps=0
 
 on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
-    #Reset read ahead for dm-0, dm-1 and dm-2 to 512kb
-    write /sys/block/dm-0/queue/read_ahead_kb 512
-    write /sys/block/dm-1/queue/read_ahead_kb 512
-    write /sys/block/dm-2/queue/read_ahead_kb 512
+    #Reset read ahead to 128kb
+    write /sys/block/dm-0/queue/read_ahead_kb 128
+    write /sys/block/dm-1/queue/read_ahead_kb 128
+    write /sys/block/dm-2/queue/read_ahead_kb 128
+    write /sys/block/dm-3/queue/read_ahead_kb 128
+    write /sys/block/dm-4/queue/read_ahead_kb 128
+    write /sys/block/mmcblk0/queue/read_ahead_kb 128
     #WDSP FW boot sysfs node used by STHAL
     chown media audio /sys/kernel/wdsp0/boot
     chown media audio /sys/kernel/wcd_cpe0/fw_name
-
-# Power HAL
-
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us
-    chown system system /sys/devices/system/cpu/cpu4/cpufreq/schedutil/up_rate_limit_us
-    chown system system /sys/devices/system/cpu/cpu4/cpufreq/schedutil/down_rate_limit_us
-
-    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us
-    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us
-    chmod 0664 /sys/devices/system/cpu/cpu4/cpufreq/schedutil/up_rate_limit_us
-    chmod 0664 /sys/devices/system/cpu/cpu4/cpufreq/schedutil/down_rate_limit_us
-
-
-    # Enable suspend to RAM
-    write /sys/power/mem_sleep "deep"
 
 on property:persist.vendor.radio.atfwd.start=false
     stop vendor.atfwd
@@ -470,14 +421,13 @@ on property:vendor.radio.atfwd.start=false
 on property:vendor.media.target.version=*
     setprop vendor.sys.media.target.version ${vendor.media.target.version}
 
-on property:vendor.netflix.bsp_rev=*
-    setprop ro.netflix.bsp_rev ${vendor.netflix.bsp_rev}
 
 service qcom-c_main-sh /vendor/bin/init.class_main.sh
     class main
     user root
     group root system
     oneshot
+    task_profiles ServiceCapacityLow
 
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
@@ -490,15 +440,18 @@ service vendor.qrtr-ns /vendor/bin/qrtr-ns -f
     user vendor_qrtr
     group vendor_qrtr
     capabilities NET_BIND_SERVICE
+    task_profiles ServiceCapacityLow
 
-service vendor.irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
+service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class core
     user root
     oneshot
+    task_profiles ServiceCapacityLow
 
 service vendor.rmt_storage /vendor/bin/rmt_storage
     class core
     user root
+    task_profiles ServiceCapacityLow
     shutdown critical
     ioprio rt 0
 
@@ -506,6 +459,8 @@ service vendor.tftp_server /vendor/bin/tftp_server
    class core
    user root
    group root system
+    task_profiles ServiceCapacityLow
+
 
 service vendor.sensors.qti /vendor/bin/sensors.qti
     class core
@@ -536,23 +491,23 @@ service loc_launcher /system/vendor/bin/loc_launcher
     class late_start
     user gps
     group gps
-
-#on property:crypto.driver.load=1
-#     insmod /system/lib/modules/qce.ko
-#     insmod /system/lib/modules/qcedev.ko
+    task_profiles ServiceCapacityLow
 
 service qcom-sh /vendor/bin/init.qcom.sh
     class late_start
     user root
     group root system radio
     oneshot
+    task_profiles ServiceCapacityLow
 
 service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     class late_start
     user root
     group root system wakelock graphics
+    task_profiles ServiceCapacityLow
     disabled
     oneshot
+
 
 on property:sys.boot_completed=1
     start qcom-post-boot
@@ -564,6 +519,7 @@ service vendor.atfwd /vendor/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
+    task_profiles ServiceCapacityLow
 
 #on property:ro.data.large_tcp_window_size=true
 #    # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
@@ -572,6 +528,7 @@ service vendor.atfwd /vendor/bin/ATFWD-daemon
 service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
     user radio
+    task_profiles ServiceCapacityLow
     disabled
     group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
@@ -579,29 +536,44 @@ service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
 service vendor.ril-daemon3 /vendor/bin/hw/rild -c 3
     class main
     user radio
+    task_profiles ServiceCapacityLow
     disabled
     group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-service vendor.charger /system/bin/charger
+service charger /system/bin/charger
     class charger
     user system
     group system graphics input
-    capabilities SYS_BOOT
     seclabel u:r:charger:s0
+    capabilities SYS_BOOT
+    task_profiles ServiceCapacityLow
 
 service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
-    socket msm_irqbalance seqpacket 660 root system
     class core
     user root
     group root
     task_profiles ServiceCapacityLow
+    disabled
+
+service vendor.msm_irqbal_lb /vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance_little_big.conf
+    class core
+    user root
+    group root
+    task_profiles ServiceCapacityLow
+    disabled
+
+service vendor.msm_irqbl_sdm630 /vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance_sdm630.conf
+    class core
+    user root
+    group root
+    task_profiles ServiceCapacityLow
+    disabled
 
 on charger
     setprop persist.sys.usb.config mass_storage
     start qcom-post-boot
     start vendor.power_off_alarm
-    start vendor.health-hal-2-1
 
 on property:vendor.display.lcd_density=*
     setprop ro.sf.lcd_density ${vendor.display.lcd_density}
@@ -616,22 +588,24 @@ on property:ro.vendor.radio.noril=*
 service vendor.power_off_alarm /vendor/bin/power_off_alarm
     class core
     group system
+    task_profiles ServiceCapacityLow
     disabled
     oneshot
 
-service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
-    class main
-    disabled
-    oneshot
-    keycodes 114 115 116
+#service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
+#    class main
+#    task_profiles ServiceCapacityLow
+#    disabled
+#    oneshot
+#    keycodes 114 115 116
 
 #Set GPU Opengles version
 on property:vendor.opengles.version=*
     setprop ro.opengles.version ${vendor.opengles.version}
 
 #Set gpu available frequencies property
-#on property:vendor.gpu.available_frequencies=*
-#    setprop ro.vendor.gpu.available_frequencies ${vendor.gpu.available_frequencies}
+on property:vendor.gpu.available_frequencies=*
+    setprop ro.vendor.gpu.available_frequencies ${vendor.gpu.available_frequencies}
 
 service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     override
@@ -646,13 +620,3 @@ service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     task_profiles ProcessCapacityHigh HighPerformance
     socket audio_hw_socket seqpacket 0666 system system
     onrestart restart audioserver
-
-service vendor.hwcomposer-2-1 /vendor/bin/hw/android.hardware.graphics.composer@2.1-service
-    override
-    class hal animation
-    user system
-    group graphics drmrpc
-    capabilities SYS_NICE
-    onrestart restart surfaceflinger
-    task_profiles ServiceCapacityLow
-    socket pps stream 0660 system system

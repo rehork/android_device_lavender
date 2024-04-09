@@ -97,7 +97,7 @@ case "$baseband" in
 
     case "$baseband" in
         "sglte" | "sglte2" )
-          if [ "x$sgltecsfb" = "xtrue" ]; then
+          if [ "x$sgltecsfb" != "xtrue" ]; then
               setprop persist.vendor.radio.voice.modem.index 0
           fi
         ;;
@@ -125,12 +125,16 @@ case "$baseband" in
         "tethered")
             start vendor.dataqti
             start vendor.dataadpl
+            start vendor.port-bridge
             ;;
         "concurrent")
             start vendor.dataqti
             start vendor.dataadpl
+            start vendor.netmgrd
+            start vendor.port-bridge
             ;;
         *)
+            start vendor.netmgrd
             ;;
     esac
 esac

@@ -2,6 +2,7 @@ type ir_dev_file, file_type;
 type proc_sysctl_schedboost, proc_type, fs_type;
 type public_adsprpcd_file, file_type;
 type sysfs_fingerprint, fs_type, sysfs_type;
+type fingerprint_data_file, data_file_type, file_type;
 type sysfs_msm_subsys, sysfs_type, fs_type;
 type sysfs_rpm, sysfs_type, fs_type;
 type sysfs_system_sleep_stats, sysfs_type, fs_type;
@@ -13,3 +14,5 @@ type kcal_dev, sysfs_type, fs_type;
 type vibrator_dev, sysfs_type, fs_type;
 # KMSG
 type proc_last_kmsg, fs_type, proc_type;
+# SystemInfo
+type sysfs_device_info, sysfs_type, fs_type;

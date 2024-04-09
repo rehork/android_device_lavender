@@ -25,7 +25,7 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
-<manifest version="1.0" type="framework">
+<manifest version="2.0" type="framework">
     <!-- atfwd -->
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.atcmdfwd</name>
@@ -34,6 +34,16 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <interface>
             <name>IAtCmdFwd</name>
             <instance>AtCmdFwdService</instance>
+        </interface>
+    </hal>
+    <!--Sigma hal-->
+    <hal format="hidl">
+        <name>vendor.qti.hardware.sigma_miracast</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>Isigma_miracast</name>
+            <instance>sigmahal</instance>
         </interface>
     </hal>
 </manifest>

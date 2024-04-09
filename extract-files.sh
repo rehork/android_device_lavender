@@ -32,8 +32,11 @@ function blob_fixup() {
         system_ext/etc/permissions/com.qti.dpmframework.xml | system_ext/etc/permissions/dpmapi.xml | system_ext/etc/permissions/telephonyservice.xml)
             sed -i "s|/system/product/framework/|/system/system_ext/framework/|g" "${2}"
             ;;
-        system_ext/etc/permissions/qcrilhook.xml)
-            sed -i 's|/product/framework/qcrilhook.jar|/system_ext/framework/qcrilhook.jar|g' "${2}"
+   system_ext/etc/permissions/qcrilhook.xml)
+            sed -i "s/\/product\/framework\//\/system_ext\/framework\//g" "${2}"
+            ;;
+ system_ext/etc/permissions/qti_libpermissions.xml)
+            sed -i "s/name=\"android.hidl.manager-V1.0-java/name=\"android.hidl.manager@1.0-java/g" "${2}"
             ;;
         system_ext/lib64/libdpmframework.so)
             for LIBSHIM_DPMFRAMEWORK in $(grep -L "libshim_dpmframework.so" "${2}"); do

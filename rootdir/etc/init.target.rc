@@ -35,13 +35,6 @@ on init
     write /dev/stune/top-app/schedtune.boost 5
     write /dev/stune/top-app/schedtune.prefer_idle 1
 
-    # Setup runtime cpusets
-    write /dev/cpuset/top-app/cpus 0-7
-    write /dev/cpuset/foreground/cpus 0-5,7
-    write /dev/cpuset/background/cpus 0-1
-    write /dev/cpuset/system-background/cpus 0-3
-    write /dev/cpuset/restricted/cpus 2-5
-
     # Setup permission for Power HAL
     chown system system /dev/stune/top-app/schedtune.boost
     chown system system /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
@@ -52,7 +45,6 @@ on init
     chown system system /sys/class/devfreq/soc:qcom,cpubw/min_freq
     chown system system /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/hyst_trigger_count
     chown system system /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/hist_memory
-# chown system system /sys/module/battery_saver/parameters/enabled
 
     chmod 0664 /dev/stune/top-app/schedtune.boost
     chmod 0664 /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
@@ -63,25 +55,6 @@ on init
     chmod 0664 /sys/class/devfreq/soc:qcom,cpubw/min_freq
     chmod 0664 /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/hyst_trigger_count
     chmod 0664 /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/hist_memory
-# chmod 0664 /sys/module/battery_saver/parameters/enabled
-
-   # Configure scheduler parameters
-    write /proc/sys/kernel/sched_downmigrate 85
-    write /proc/sys/kernel/sched_upmigrate 95
-    write /proc/sys/kernel/sched_autogroup_enabled 0
-    write /proc/sys/kernel/sched_walt_rotate_big_tasks 0
-
-    # Disable Core control
-    write /sys/devices/system/cpu/cpu0/core_ctl/enable 0
-    write /sys/devices/system/cpu/cpu6/core_ctl/enable 0
-    
-    # Enable idle state listener
-    write /sys/class/drm/card0/device/idle_encoder_mask 1
-    write /sys/class/drm/card0/device/idle_timeout_ms 100
-    
-on property:persist.sys.device_provisioned=1
-    setprop dalvik.vm.dex2oat-cpu-set 0,1,2,3,4,5,7
-    setprop dalvik.vm.dex2oat-threads 6
 
     # Change permissions for /dev/diag
     chmod 0666 /dev/diag
@@ -113,11 +86,18 @@ on post-fs-data
     mkdir /data/tombstones/lpass 0771 system system
     mkdir /data/tombstones/wcnss 0771 system system
     mkdir /data/tombstones/dsps 0771 system system
-    mkdir /data/vendor/misc/seemp 0700 system system
+    mkdir /data/misc/seemp 0700 system system
 
 on boot
     start vendor.rmt_storage
     start rfs_access
+
+    # Thermal
+    chmod 0664 /sys/class/thermal/thermal_message/sconfig
+    chown system system /sys/class/thermal/thermal_message/sconfig
+    chmod 0666 /sys/class/thermal/thermal_message/temp_state
+    chown system system /sys/class/thermal/thermal_message/temp_state
+
     write /dev/cpuset/top-app/cpus 0-7
     write /dev/cpuset/foreground/cpus 0-7
     write /dev/cpuset/foreground/boost/cpus 0-7
@@ -145,7 +125,7 @@ on boot
     mkdir /data/vendor/camera 0770 camera camera
 
 #Load WLAN driver
-   insmod /vendor/lib/modules/qca_cld3_wlan.ko
+   #insmod /vendor/lib/modules/qca_cld3_wlan.ko
 
 #USB controller configuration
     setprop vendor.usb.rndis.func.name "rndis_bam"
@@ -191,6 +171,7 @@ on property:sys.shutdown.requested=*
 #    write /sys/class/power_supply/battery/charging_enabled 1
 
 service vendor.qseecomd /vendor/bin/qseecomd
+   shutdown critical
    class core
    user root
    group root
@@ -267,20 +248,13 @@ on property:init.svc.zygote=restarting
 
 on charger
     start qcom-post-boot
+    chown system system /sys/class/leds/red/brightness
+    chmod 0666 /sys/class/leds/red/brightness
     start vendor.hvdcp_opti
     setprop sys.usb.configfs 1
-    start vendor.power_off_alarm
-    chown system system /sys/class/leds/red/brightness
-    write /sys/class/leds/red/brightness 255
+    start power_off_alarm
 
 service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
     class main
     user root
     group system wakelock
-
-on property:vendor.post_boot.parsed=1
-    # tune blkio
-    write /dev/blkio/blkio.weight 1000
-    write /dev/blkio/background/blkio.weight 200
-    write /dev/blkio/blkio.group_idle 2000
-    write /dev/blkio/background/blkio.group_idle 0

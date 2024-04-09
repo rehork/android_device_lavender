@@ -316,6 +316,9 @@
     <!-- If this is true, the screen will fade off. -->
     <bool name="config_animateScreenLights">false</bool>
 
+    <!-- Flag indicating whether the surface flinger has limited alpha compositing functionality in hardware. If set, the window manager will disable alpha trasformation in animations where not strictly needed. -->
+    <bool name="config_sf_limitedAlpha">true</bool>
+
     <!-- Boolean indicating whether the wifi chipset has 5GHz frequency band support -->
     <bool translatable="false" name="config_wifi5ghzSupport">true</bool>
 
@@ -325,12 +328,6 @@
          and Strength as defined in Authenticators.java -->
     <string-array name="config_biometric_sensors" translatable="false" >
         <item>0:2:15</item> <!-- ID0:Fingerprint:Strong -->
-    </string-array>
-
-    <!-- The list of components which should be automatically disabled for a specific device. -->
-    <string-array name="config_deviceDisabledComponents" translatable="false">
-        <item>com.google.android.gms/com.google.android.gms.nearby.messages.service.NearbyMessagesService</item>
-        <item>com.google.android.gms/com.google.android.gms.nearby.discovery.service.DiscoveryService</item>
     </string-array>
 
     <!-- If not zero, limits the internal screen recorder's framerate to the set value. -->
@@ -370,8 +367,8 @@
 
     <!-- Determines whether the shell features all run on another thread. -->
     <bool name="config_enableShellMainThread">true</bool>
-
-    <!-- List of comma separated package names for which we the system will not show crash like
-         tts, etc. dialogs. -->
-    <string name="config_appsNotReportingCrashes">com.google.android.tts</string>
+    <!-- Whether to enable Lineage Health Service -->
+    <bool name="config_lineageHealthSupported">true</bool>
+    <!-- Auto-brightness sensor type string -->
+    <string name="config_displayLightSensorType">"android.sensor.light"</string>
 </resources>

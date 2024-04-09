@@ -3,11 +3,6 @@ persist.sys.usb.config=mtp,adb
 ro.adb.secure=0
 ro.debuggable=1
 
-# App launch prefetching (IORapd)
-ro.iorapd.enable=false
-iorapd.perfetto.enable=false
-iorapd.readahead.enable=false
-persist.device_config.runtime_native_boot.iorap_readahead_enable=false
 
 # Charger
 ro.charger.disable_init_blank=true
@@ -33,3 +28,6 @@ persist.log.tag.wificond=S
 persist.log.tag.b/223498680=S
 persist.log.tag.TrafficStats=S
 persist.log.tag.ContrastColorUtil=S
+
+# Telephony
+ro.telephony.handle_audio_direction_changes_between_call_state_changes=false

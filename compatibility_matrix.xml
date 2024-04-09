@@ -7,14 +7,6 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="aidl" optional="true">
-    <name>android.hardware.gnss</name>
-    <version>1-2</version>
-    <interface>
-        <name>IGnss</name>
-        <instance>default</instance>
-    </interface>
-    </hal>
     <hal format="hidl" optional="false">
         <name>android.frameworks.sensorservice</name>
         <version>1.0</version>
@@ -79,7 +71,7 @@
             <instance>sigmahal</instance>
         </interface>
    </hal>
-   <hal format="native" optional="false">
+    <hal format="native" optional="false">
         <name>netutils-wrapper</name>
         <!--
             netutils-wrapper should only list a single version x.0.

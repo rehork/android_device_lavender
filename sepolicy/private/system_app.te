@@ -1,4 +1,11 @@
 # Suspend
-dontaudit system_app system_suspend_control_service:service_manager { find };
-dontaudit system_app system_suspend_control_internal_service:service_manager { find };
-dontaudit system_app tracingproxy_service:service_manager { find };
+dontaudit system_app {
+  system_suspend_control_internal_service
+  system_suspend_control_service
+  tracingproxy_service
+}:service_manager find;
+binder_call(system_app, storaged)
+get_prop(system_app, qemu_hw_prop)
+# Allow externalstorage access
+allow system_app mnt_pass_through_file:dir { create_dir_perms mounton };
+

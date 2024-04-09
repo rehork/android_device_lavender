@@ -1,1 +1,11 @@
 allow platform_app system_app_data_file:file rw_file_perms;
+
+# FPS info
+allow platform_app sysfs_graphics:file r_file_perms;
+
+allow platform_app sysfs_kgsl:dir search;
+
+allow platform_app sysfs_device_info:lnk_file { read open getattr ioctl };
+allow platform_app sysfs_kgsl:file { read open getattr ioctl };
+allow platform_app sysfs_battery_supply:dir search;
+allow platform_app sysfs_battery_supply:file { read open getattr ioctl };

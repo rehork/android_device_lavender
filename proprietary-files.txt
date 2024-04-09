@@ -79,6 +79,7 @@ vendor/lib/soundfx/libasphere.so|b1b26f99d9fbfe75f109349de5505ca39ccd4c8c
 vendor/lib/soundfx/libqcbassboost.so|73339450a42b598a3c13e67b3d4a2266d986fea2
 vendor/lib/soundfx/libqcreverb.so|eb437cd5e264b1adb4546c6a5617c5da17be5839
 vendor/lib/soundfx/libqcvirt.so|ee9eaa81bb24ac0379e06b44ef257967a4d32614
+vendor/lib/hw/sound_trigger.primary.sdm660.so
 
 # Audio (Dirac) - from xiaomi
 vendor/etc/diracmobile_0.config|88fa19095df9e256f0af510df266f749bf60e258
@@ -86,6 +87,8 @@ vendor/etc/diracvdd.bin|b54270d4f44acc2bb2be8e1cdb3e54fb2c6be07b
 vendor/lib/libDiracAPI_SHARED.so|42b49679d38eca93fead05ea06ddbdc8108fd4b1
 vendor/lib/soundfx/libdirac.so|f63826a905b520fa524e4c1b147be7cf65240953
 vendor/lib/soundfx/libmisoundfx.so|569ee2df586e95116b79cfb3d89429f2032a7a76
+vendor/lib64/libnotifyaudiohal.so
+vendor/lib64/libultrasound.so
 
 # Bluetooth - from jasmine V11.0.28.0.QDIMIXM
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|57a0a575a2b1b96176fda1bcb84ea8371c4070d1
@@ -102,6 +105,16 @@ vendor/lib/hw/camera.sdm660.so|50e671432994ec9085810e5fa9c9c6619262bc19
 vendor/lib/libFaceGrade.so|ab36b265668f77a613719e1b8cedf0b1a0219fa5
 vendor/lib/libMegviiFacepp-0.5.2.so|640676bd292c78197ea963aa7875153fab44a383
 vendor/lib/libSNPE.so|66f23aae6d30b09121f06635c749d6ae47543359
+vendor/lib/liboptizoom.so
+vendor/lib/libubifocus.so
+vendor/lib/libmmcamera_trueportrait_lib.so
+vendor/lib/libseemore.so
+vendor/lib/libllvd_smore.so
+vendor/lib/libmmcamera_chromaflash_lib.so
+vendor/lib/libmmcamera_llvd.so
+vendor/lib/libmmcamera_optizoom_lib.so
+vendor/lib/libmmcamera_stillmore_lib.so
+vendor/lib/libmmcamera_ubifocus_lib.so
 vendor/lib/libSonyIMX376C3RmscLibrary.so|b3138daf9b93c645b89b67d28c3f6fadfbbfdb42
 vendor/lib/libSonyIMX376KRmscLibrary.so|2f7792d51bf476352590b8643e43762f68cadeef
 vendor/lib/libVDClearShot.so|fe429e3ddac8f989d2c754b6a3da36ebe8b85060
@@ -1144,6 +1157,16 @@ vendor/lib64/libsecureui_svcsock.so|889d4a12c5dee56ed4b10548abbd7b9033cbdad2
 vendor/lib64/libSecureUILib.so|3a059d1fe3395eaefeb7817ad3af46987b6f4794
 vendor/lib64/libssd.so|a64337d8044607b81adcf7e8c5760cf8cdcf82b4
 vendor/lib64/libStDrvInt.so|a7bd8140e2cd5aa70a7d929e01233e5b71844cd8
+vendor/lib64/libsecureui.so
+vendor/lib64/libops.so
+vendor/lib64/libspl.so
+
+# ESE-Powermanager - from LA.UM.9.12.r1-10800-SMxx50.0
+vendor/bin/hw/vendor.qti.esepowermanager@1.1-service|ae3e15534b0c8abd22f8a5e52a491df8c46bd0c2
+vendor/etc/init/vendor.qti.esepowermanager@1.1-service.rc|3c024c7135ec3dd8658624509ee61396a74f1ede
+vendor/lib64/hw/vendor.qti.esepowermanager@1.1-impl.so|17f648402c874e4f981caadd91438a525089e35d
+vendor/lib64/vendor.qti.esepowermanager@1.0.so|48b202753701401c03d386dae7a00bef4aff153e
+vendor/lib64/vendor.qti.esepowermanager@1.1.so|0d8e2aee61fbbfb345870ca965458babbef9912f
 
 # Fingerprint firmware
 vendor/firmware/fpctzappfingerprint.b00
@@ -1632,7 +1655,7 @@ vendor/etc/init/vendor.qti.hardware.tui_comm@1.0-service-qti.rc|2cfc563d7e157937
 vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so|e47baed52f1c0637de34fa55e45a86b4b412a672
 
 # Widevine - from jasmine V11.0.22.0.QDIMIXM
-vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.2-service.widevine.xml|1b556a6b981dfe8c5d62311b59758d370dd6dd10 
+-vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.2-service.widevine.xml|1b556a6b981dfe8c5d62311b59758d370dd6dd10 
 vendor/lib/mediadrm/libwvdrmengine.so|a8bdbbfb3aa222095f1cb7658ec5c46fa41dd560 
 vendor/lib64/mediadrm/libwvdrmengine.so|80280a2292db04a1eb3750df6897dea96f0f62f5 
 vendor/lib64/libcpion.so|ff24ef248bb35fd3cc1081a63f33c2565dc6351f

@@ -6,3 +6,4 @@ allow system_server sysfs_usb_supply:file { getattr open read write };
 
 # /proc/last_kmsg
 allow system_server proc_last_kmsg:file r_file_perms;
+dontaudit system_server debugfs_wakeup_sources:file { read };
