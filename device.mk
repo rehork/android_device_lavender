@@ -89,7 +89,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libhdmiedid \
     libhfp \
-    libsndmonitor
+    libsndmonitor \
+    libspkrprot
     
 PRODUCT_COPY_FILES += \
    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/audio/,$(TARGET_COPY_OUT_VENDOR)/etc)
@@ -116,8 +117,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio@2.0-impl \
     android.hardware.bluetooth.audio@2.1-impl \
+    android.hardware.bluetooth.audio@2.0-impl \
+    android.hardware.bluetooth.audio@2.1-impl \
     android.hardware.bluetooth.a2dp@1.0 \
     android.hardware.bluetooth.a2dp@1.0.vendor \
+    android.hardware.bluetooth.a2dp@1.0-impl.mock \
     android.hardware.bluetooth.audio-impl \
     audio.bluetooth.default \
     android.hardware.bluetooth@1.0.vendor \
@@ -138,6 +142,7 @@ PRODUCT_PACKAGES += \
     libdng_sdk.vendor \
     libstdc++.vendor \
     vendor.qti.hardware.camera.device@1.0:64
+
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -195,7 +200,6 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
     android.hardware.renderscript@1.0-impl \
-    android.frameworks.displayservice@1.0 \
     vendor.display.config@1.9 \
     vendor.display.config@1.9.vendor \
     vendor.display.config@2.0 \
@@ -394,7 +398,7 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.3.vendor \
+    android.hardware.power@1.2.vendor \
     android.hardware.power-service.xiaomi-libperfmgr
 
 # Powerhint
@@ -459,12 +463,14 @@ PRODUCT_PACKAGES += \
 # Seccomp policy
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
-    $(LOCAL_PATH)/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
+    $(LOCAL_PATH)/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy \
+    $(LOCAL_PATH)/seccomp/mediaswcodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaswcodec-seccomp.policy
 #    $(LOCAL_PATH)/seccomp/codec2.vendor.ext.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/codec2.vendor.ext.policy
 
 # Sensors
 PRODUCT_PACKAGES += \
     android.frameworks.sensorservice@1.0.vendor \
+    android.frameworks.sensorservice@1.0 \
     android.hardware.sensors@1.0-impl \
     android.hardware.sensors@1.0-service \
     libsensorndkbridge

@@ -60,8 +60,8 @@ dev.pm.dyn_samplingrate=1
 debug.egl.hw=0
 debug.sf.hw=0
 persist.hwc.enable_vds=1
-debug.sf.auto_latch_unsignaled=1
-debug.sf.latch_unsignaled=0
+debug.sf.auto_latch_unsignaled=0
+debug.sf.latch_unsignaled=1
 debug.gralloc.enable_fb_ubwc=1
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
@@ -76,7 +76,7 @@ ro.surface_flinger.enable_frame_rate_override=false
 
 
 #AvoidGfxAccel 
-ro.config.avoid_gfx_accel=true
+#ro.config.avoid_gfx_accel=true
 
 # Render
 renderthread.skia.reduceopstasksplitting=true

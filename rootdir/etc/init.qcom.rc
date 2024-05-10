@@ -39,7 +39,7 @@ on early-init
     chmod 0755 /sys/kernel/tracing
 
 on init
-
+    write /dev/cpuset/audio-app/cpus 0-5
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
@@ -52,6 +52,30 @@ on init
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
     
     write /sys/class/graphics/fb0/idle_time 100
+   
+ # Change permissions for /dev/diag
+    chmod 0666 /dev/diag
+
+on late-init
+    # Start services for bootanim
+    start surfaceflinger
+    start bootanim
+    start vendor.hwcomposer-2-3
+    start vendor.configstore-hal
+    start vendor.qti.hardware.display.allocator
+
+on fs
+    mkdir /mnt/vendor/persist 0771 root system
+    chown root system /mnt/vendor/persist
+    chmod 0771 /mnt/vendor/persist
+    restorecon_recursive /mnt/vendor/persist
+    mkdir /persist/data 0700 system system
+
+
+on post-fs
+    # make the selinux kernel policy world-readable
+    chmod 0444 /sys/fs/selinux/policy
+
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -100,6 +124,7 @@ on boot
     chown system system /sys/module/msm_core/parameters/polling_interval
     chown system system /sys/module/msm_core/parameters/disabled
     chown system system /sys/kernel/boot_slpi/ssr
+    chown system system /sys/kernel/boot_adsp/ssr
     chown system system /sys/module/radio_iris_transport/parameters/fmsmd_set
     chmod 0660 /sys/module/bluetooth_power/parameters/power
     chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
@@ -211,6 +236,7 @@ on boot
 on post-fs-data
     # Allow writing to the kernel trace log.
     chmod 0222 /sys/kernel/debug/tracing/trace_marker
+    chmod 0222 /sys/kernel/tracing/trace_marker
     
     # msm specific files that need to be created on /data
     mkdir /data/vendor/misc 01771 system system
@@ -245,6 +271,10 @@ on post-fs-data
     mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
     mkdir /data/vendor/ramdump/bluetooth 0770 bluetooth bluetooth
 
+  # Access permission for input_suspend
+    chown system system /sys/class/power_supply/battery/input_suspend
+    chmod 0666 /sys/class/power_supply/battery/input_suspend
+
     # Create the directories used by the Wireless subsystem
     mkdir /data/vendor/wifi 0770 wifi wifi
     mkdir /data/vendor/wifi/sockets 0770 wifi wifi
@@ -275,8 +305,6 @@ on post-fs-data
 
     # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
     # We chown/chmod /persist again so because mount is run as root + defaults
-    chown root system /mnt/vendor/persist/
-    chmod 0771 /mnt/vendor/persist/
     chown system system /persist/WCNSS_qcom_wlan_nv.bin
     chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
@@ -300,6 +328,11 @@ on post-fs-data
     mkdir /dev/socket/location 0770 gps gps
     mkdir /dev/socket/location/mq 0770 gps gps
     mkdir /dev/socket/location/xtra 0770 gps gps
+    mkdir /data/vendor/location-partner 0770 gps gps
+    mkdir /data/vendor/location-partner/dre 0770 gps gps
+    mkdir /data/vendor/location-partner/ppe 0770 gps gps
+    mkdir /dev/socket/location 0770 gps gps
+    mkdir /dev/socket/location/ehub 0770 gps gps
 
     #Create directories for wifihal services
     mkdir /dev/socket/wifihal 0770 wifi wifi
@@ -420,6 +453,9 @@ on property:persist.vendor.radio.atfwd.start=false
 
 on property:vendor.radio.atfwd.start=false
     stop vendor.atfwd
+
+    # Enable suspend to RAM
+    write /sys/power/mem_sleep "deep"
 
 # corefile limit
 #on property:persist.debug.trace=1
