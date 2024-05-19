@@ -63,7 +63,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.software.verified_boot.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.verified_boot.xml \
     frameworks/native/data/etc/android.software.vulkan.deqp.level-2020-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.software.freeform_window_management.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.freeform_window_management.xml
 
 
@@ -129,6 +128,7 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth LDAC
 PRODUCT_PACKAGES += \
+    libbluetooth_audio_session \
     libldacBT_bco \
     libldacBT_abr \
     libldacBT_enc 
@@ -141,8 +141,8 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-service \
     libdng_sdk.vendor \
     libstdc++.vendor \
-    vendor.qti.hardware.camera.device@1.0:64
-
+    vendor.qti.hardware.camera.device@1.0:64 \
+    vendor.qti.hardware.camera.postproc@1.0.vendor
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -167,6 +167,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.ir@1.0-service.xiaomi_sdm660
 
+# Context Hub
+PRODUCT_PACKAGES += \
+    android.hardware.contexthub@1.0-impl.generic \
+    android.hardware.contexthub@1.0-service
+
 # DebugFS
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
 
@@ -187,8 +192,7 @@ PRODUCT_PACKAGES += \
     libdisplayconfig \
     libtinyxml \
     libtinyxml2 \
-    libqdMetaData \
-    libqdMetaData.system
+    libqdMetaData 
 
 PRODUCT_PACKAGES += \
     android.frameworks.displayservice@1.0 \
@@ -358,6 +362,7 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml
 
 PRODUCT_PACKAGES += \
+    libminijail \
     libavservices_minijail \
     libavservices_minijail.vendor
 
@@ -374,6 +379,8 @@ PRODUCT_PACKAGES += \
 
 # OMX
 PRODUCT_PACKAGES += \
+    libcodec2_hidl@1.0.vendor \
+    libcodec2_vndk.vendor \
     libc2dcolorconvert \
     libhypv_intercept \
     libmm-omxcore \
@@ -458,7 +465,8 @@ PRODUCT_BOOT_JARS += \
 
 # Shims
 PRODUCT_PACKAGES += \
-    libcamera_sdm660_shim
+    libcamera_sdm660_shim \
+    lib-imsvt 
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \

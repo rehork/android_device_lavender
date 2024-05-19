@@ -20,8 +20,12 @@ vendor.post_boot.parsed=1
 # Logs
 persist.log.tag.OpenGLRenderer=S
 
-# Dex
+# Disable vsync for cpu rendered apps
+debug.cpurend.vsync=false
+
+# Dalvik
 dalvik.vm.dex2oat64.enabled=true
+dalvik.vm.systemuicompilerfilter=speed
 
 # Media 
 mm.enable.smoothstreaming=true

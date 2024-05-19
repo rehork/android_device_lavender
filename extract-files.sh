@@ -43,6 +43,10 @@ function blob_fixup() {
                 "${PATCHELF}" --add-needed "libshim_dpmframework.so" "$LIBSHIM_DPMFRAMEWORK"
             done
             ;;
+        system_ext/lib64/lib-imsvideocodec.so)
+        "${PATCHELF}" --replace-needed "libqdMetaData.so" "libqdMetaData.system.so" "${2}"
+        ${PATCHELF} --add-needed "lib-imsvtshim.so" "${2}"
+        ;;
     esac
 }
 

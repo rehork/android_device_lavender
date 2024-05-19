@@ -66,18 +66,6 @@
     </interface>
 </hal>
 <hal format="hidl" optional="true">
-    <name>android.frameworks.sensorservice</name>
-    <version>1.0</version>
-    <interface>
-        <name>ISensorManager</name>
-        <instance>default</instance>
-    </interface>
-    <interface>
-        <name>ISensors</name>
-        <instance>default</instance>
-    </interface>
-</hal>
-<hal format="hidl" optional="true">
     <name>android.hardware.graphics.mapper</name>
     <version>2.0-1</version>
     <interface>
