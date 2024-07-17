@@ -101,8 +101,8 @@ on boot
     write /dev/cpuset/top-app/cpus 0-7
     write /dev/cpuset/foreground/cpus 0-7
     write /dev/cpuset/foreground/boost/cpus 0-7
-    write /dev/cpuset/background/cpus 0-7
-    write /dev/cpuset/system-background/cpus 0-7
+    write /dev/cpuset/background/cpus 0-1
+    write /dev/cpuset/system-background/cpus 0-3
     ####Regionalization config and prop files####
     chmod 0644 /persist/speccfg/spec
     chmod 0644 /persist/speccfg/devicetype
@@ -146,11 +146,13 @@ service vendor.per_mgr /system/vendor/bin/pm-service
     user system
     group system
     ioprio rt 4
+    task_profiles ServiceCapacityLow
 
 service vendor.per_proxy /system/vendor/bin/pm-proxy
     class core
     user system
     group system
+    task_profiles ServiceCapacityLow
     disabled
 
 on property:init.svc.vendor.per_mgr=running
@@ -258,3 +260,4 @@ service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
     class main
     user root
     group system wakelock
+    task_profiles ServiceCapacityLow

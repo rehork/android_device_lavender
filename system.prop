@@ -50,6 +50,9 @@ persist.log.tag.b/223498680=S
 persist.log.tag.TrafficStats=S
 persist.log.tag.ContrastColorUtil=S
 
+# Feature flags
+persist.sys.fflag.override.settings_enable_monitor_phantom_procs=false
+
 # Radio
 DEVICE_PROVISIONED=1
 persist.sys.fflag.override.settings_network_and_internet_v2=true
@@ -60,30 +63,39 @@ ro.telephony.block_binder_thread_on_incoming_calls=false
 persist.vendor.qti.telephony.vt_cam_interface=2
 
 # Display
-dev.pm.dyn_samplingrate=1
 debug.egl.hw=0
 debug.sf.hw=0
 persist.hwc.enable_vds=1
 debug.sf.auto_latch_unsignaled=0
+debug.sf.disable_client_composition_cache=1
 debug.sf.latch_unsignaled=1
-debug.gralloc.enable_fb_ubwc=1
+debug.sf.predict_hwc_composition_strategy=0
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 sdm.debug.disable_skip_validate=1
 vendor.display.enable_default_color_mode=1
-vendor.gralloc.enable_fb_ubwc=1
+#vendor.gralloc.enable_fb_ubwc=1
 vendor.display.disable_skip_validate=1
 debug.hwui.skia_atrace_enabled=false
 debug.sf.enable_transaction_tracing=false
 ro.surface_flinger.enable_frame_rate_override=false
-#ro.hwui.render_ahead=20
 
 
-#AvoidGfxAccel 
-#ro.config.avoid_gfx_accel=true
+# Media
+debug.stagefright.omx_default_rank=0
+media.aac_51_output_enabled=true
+media.stagefright.enable-aac=true
+media.stagefright.enable-fma2dp=true
+media.stagefright.enable-http=true
+media.stagefright.enable-player=true
+media.stagefright.enable-qcp=true
+media.stagefright.enable-scan=true
+media.stagefright.thumbnail.prefer_hw_codecs=true
+mmp.enable.3g2=true
+persist.mm.enable.prefetch=true
 
-# Render
-renderthread.skia.reduceopstasksplitting=true
+# Disable vsync for cpu rendered apps
+debug.cpurend.vsync=false
 
 # Watchdog
 ro.hw_timeout_multiplier=3
