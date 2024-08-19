@@ -1,3 +1,6 @@
+allow untrusted_app window_service:service_manager { find };
+allow untrusted_app proc_zoneinfo:file read;
+
 allow untrusted_app untrusted_app:udp_socket ioctl;
 allow untrusted_app tmpfs:lnk_file { read };
 

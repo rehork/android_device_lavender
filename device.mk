@@ -52,7 +52,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
-    frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version-1_1.xml \
+    frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml \
     frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.passpoint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.passpoint.xml \
@@ -173,11 +173,6 @@ PRODUCT_PACKAGES += \
 # ConsumerIR
 PRODUCT_PACKAGES += \
     android.hardware.ir@1.0-service.xiaomi_sdm660
-
-# Context Hub
-PRODUCT_PACKAGES += \
-    android.hardware.contexthub@1.0-impl.generic \
-    android.hardware.contexthub@1.0-service
 
 # DebugFS
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
@@ -334,9 +329,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0.vendor \
     android.hardware.keymaster@4.0 \
-    android.hardware.keymaster@4.0.vendor \
-    android.system.keystore2
-
+    android.hardware.keymaster@4.0.vendor 
 
 # Lineage Health
 PRODUCT_PACKAGES += \
@@ -421,9 +414,6 @@ PRODUCT_PACKAGES += \
     android.system.net.netd@1.1.vendor \
     netutils-wrapper-1.0
 
-
-
-
 # Perf
 PRODUCT_PACKAGES += \
     libqti-perfd-client
@@ -474,21 +464,37 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.config@1.2.vendor \
     android.hardware.radio.deprecated@1.0 \
     android.hardware.radio.deprecated@1.0.vendor \
+    android.hardware.secure_element@1.0 \
+    android.hardware.secure_element@1.0.vendor \
+    android.hardware.secure_element@1.1 \
+    android.hardware.secure_element@1.1.vendor \
     android.hardware.secure_element@1.2 \
     android.hardware.secure_element@1.2.vendor \
     rild \
+    libjson \
+    libril \
+    librilutils \
     librmnetctl \
+    libsqlite.vendor \
     libprotobuf-cpp-full
 
 PRODUCT_PACKAGES += \
+    extphonelib \
+    extphonelib-product \
+    extphonelib.xml \
+    extphonelib_product.xml \
     ims-ext-common \
     ims_ext_common.xml \
     qti-telephony-hidl-wrapper \
+    qti-telephony-hidl-wrapper-prd \
     qti_telephony_hidl_wrapper.xml \
+    qti_telephony_hidl_wrapper_prd.xml \
     qti-telephony-utils \
+    qti-telephony-utils-prd \
     qti_telephony_utils.xml \
-    libxml2 \
-    telephony-ext
+    qti_telephony_utils_prd.xml \
+    telephony-ext \
+    libxml2
 
 PRODUCT_BOOT_JARS += \
     telephony-ext
@@ -511,6 +517,7 @@ PRODUCT_PACKAGES += \
     android.frameworks.sensorservice@1.0 \
     android.hardware.sensors@1.0-impl \
     android.hardware.sensors@1.0-service \
+    libpower.vendor \
     libsensorndkbridge
 
 # Speed profile services and wifi-service to reduce RAM and storage
@@ -528,7 +535,6 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/interfaces \
     hardware/google/pixel \
     hardware/xiaomi
-
 
 # System
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -561,6 +567,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
+
+# Vulkan
+PRODUCT_PACKAGES += \
+    libvulkan
 
 # Wifi
 PRODUCT_PACKAGES += \

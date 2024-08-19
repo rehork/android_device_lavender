@@ -56,10 +56,11 @@ genfscon proc /last_kmsg                                        u:object_r:proc_
 
 
 # Wakeup
+genfscon sysfs /devices/virtual/input/input1/wakeup             u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@0/video4linux/video3/wakeup u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@1/video4linux/video4/wakeup u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@2/video4linux/video5/wakeup u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/soc/soc:fpc1020/wakeup u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/soc/soc:hall_switch/wakeup u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/soc/soc:qcom,msm-ext-disp/extcon/extcon2/name                                                                                                                                                 u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/soc/soc:qcom,msm-ext-disp/extcon/extcon3/name                                                                                                                                                 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/soc:fpc1020/wakeup        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/soc:hall_switch/wakeup    u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,msm-ext-disp/extcon/extcon2/name    u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,msm-ext-disp/extcon/extcon3/name    u:object_r:sysfs_wakeup:s0

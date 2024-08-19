@@ -13,19 +13,23 @@ persist.vendor.cne.feature=1
 ro.charger.enable_suspend=true
 ro.charger.disable_init_blank=true
 
+# Dalvik
+dalvik.vm.dex2oat64.enabled=true
+dalvik.vm.systemuicompilerfilter=speed
+
 # Deep Sleep
 pm.sleep_mode=1
 vendor.post_boot.parsed=1
 
-# Logs
-persist.log.tag.OpenGLRenderer=S
+# Dirac
+ro.audio.soundfx.dirac=true 
+persist.dirac.acs.controller=qem 
+persist.dirac.acs.ignore_error=1 
+persist.dirac.acs.storeSettings=1
+persist.audio.dirac.speaker=true 
 
 # Disable vsync for cpu rendered apps
 debug.cpurend.vsync=false
-
-# Dalvik
-dalvik.vm.dex2oat64.enabled=true
-dalvik.vm.systemuicompilerfilter=speed
 
 # Media 
 mm.enable.smoothstreaming=true
@@ -50,6 +54,7 @@ persist.log.tag.b/223498680=S
 persist.log.tag.TrafficStats=S
 persist.log.tag.ContrastColorUtil=S
 
+
 # Feature flags
 persist.sys.fflag.override.settings_enable_monitor_phantom_procs=false
 
@@ -65,6 +70,7 @@ persist.vendor.qti.telephony.vt_cam_interface=2
 # Display
 debug.egl.hw=0
 debug.sf.hw=0
+debug.sf.disable_backpressure=0
 persist.hwc.enable_vds=1
 debug.sf.auto_latch_unsignaled=0
 debug.sf.disable_client_composition_cache=1
@@ -74,11 +80,11 @@ dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 sdm.debug.disable_skip_validate=1
 vendor.display.enable_default_color_mode=1
-#vendor.gralloc.enable_fb_ubwc=1
 vendor.display.disable_skip_validate=1
 debug.hwui.skia_atrace_enabled=false
 debug.sf.enable_transaction_tracing=false
 ro.surface_flinger.enable_frame_rate_override=false
+ro.surface_flinger.has_wide_color_display=true
 
 
 # Media
@@ -100,12 +106,8 @@ debug.cpurend.vsync=false
 # Watchdog
 ro.hw_timeout_multiplier=3
 
-# Dirac
-ro.audio.soundfx.dirac=true 
-persist.dirac.acs.controller=qem 
-persist.dirac.acs.ignore_error=1 
-persist.dirac.acs.storeSettings=1
-persist.audio.dirac.speaker=true 
+# WiFi
+wifi.interface=wlan0
 
 # Telephony
 ro.telephony.handle_audio_direction_changes_between_call_state_changes=false

@@ -38,6 +38,10 @@ on early-init
     mount tracefs tracefs /sys/kernel/tracing
     chmod 0755 /sys/kernel/tracing
 
+    # Workarround for cache
+    rm /data/resource-cache
+    rm /data/system/package_cache
+
 on init
     write /dev/cpuset/audio-app/cpus 0-5
     # Support legacy paths
@@ -147,8 +151,7 @@ on boot
     # This location is used by QCRIL to host UNIX domain
     # socket files used for internal IPC within QCRIL
     # modules
-    mkdir /dev/socket/qmux_radio 0770 radio radio
-    chmod 2770 /dev/socket/qmux_radio
+    mkdir /dev/socket/qmux_radio 2770 radio radio
 
     mkdir /persist/drm 0770 system system
     mkdir /mnt/vendor/persist/bluetooth 0770 bluetooth bluetooth
@@ -589,8 +592,8 @@ service charger /system/bin/charger
     class charger
     user system
     group system graphics input
-    seclabel u:r:charger:s0
     capabilities SYS_BOOT
+    seclabel u:r:charger:s0
     task_profiles ServiceCapacityLow
 
 service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
@@ -598,7 +601,6 @@ service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/m
     user root
     group root
     task_profiles ServiceCapacityLow
-    disabled
 
 service vendor.msm_irqbal_lb /vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance_little_big.conf
     class core

@@ -84,9 +84,7 @@ AUDIO_FEATURE_ENABLED_EXT_AMPLIFIER := false
 # Build
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
-RELAX_USES_LIBRARY_CHECK := true
 BUILD_BROKEN_ENFORCE_SYSPROP_OWNER := true
-BUILD_BROKEN_INCORRECT_PARTITION_IMAGES := true
 
 # Bluetooth
 TARGET_FWK_SUPPORTS_FULL_VALUEADDS := true
@@ -124,7 +122,10 @@ TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH := /sys/class/power_supply/battery/
 
 # HIDL
 DEVICE_FRAMEWORK_MANIFEST_FILE := $(DEVICE_PATH)/framework_manifest.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/device_framework_compatibility_matrix.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
+    hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml \
+    vendor/lineage/config/device_framework_matrix.xml \
+    $(DEVICE_PATH)/device_framework_compatibility_matrix.xml
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 ODM_MANIFEST_FILES := $(DEVICE_PATH)/manifest_odm.xml

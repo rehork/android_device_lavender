@@ -89,6 +89,14 @@
     </interface>
 </hal>
 <hal format="hidl" optional="true">
+    <name>android.hardware.power</name>
+    <version>1.0-2</version>
+    <interface>
+        <name>IPower</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="hidl" optional="true">
     <name>android.hardware.radio.config</name>
     <version>1.0-1</version>
     <interface>
@@ -562,6 +570,14 @@
     <interface>
         <name>IPower</name>
         <instance>default</instance>
+    </interface>
+</hal>
+<hal format="hidl" optional="true">
+    <name>vendor.qti.hardware.radio.internal.deviceinfo</name>
+    <version>1.0</version>
+    <interface>
+        <name>IDeviceInfo</name>
+        <instance>deviceinfo</instance>
     </interface>
 </hal>
 </compatibility-matrix>

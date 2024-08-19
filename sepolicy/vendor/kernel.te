@@ -1,1 +1,3 @@
 allow kernel kernel:capability { kill };
+allow kernel apk_tmp_file:dir { create ioctl open read };
+allow kernel apk_tmp_file:file { create ioctl open read };
