@@ -33,14 +33,19 @@ import /vendor/etc/init/hw/init.qcom.test.rc
 import /vendor/etc/init/hw/init.device.rc
 
 on early-init
-    chown root system /dev/kmsg
-    chmod 0620 /dev/kmsg
     mount tracefs tracefs /sys/kernel/tracing
     chmod 0755 /sys/kernel/tracing
+    chown system system /sys/kernel/debug
+
+    chown root system /dev/kmsg
+    chmod 0620 /dev/kmsg
 
     # Workarround for cache
     rm /data/resource-cache
     rm /data/system/package_cache
+
+    # turn off vblank irq immediately after turning off
+    write /sys/module/drm/parameters/vblankoffdelay -1
 
 on init
     write /dev/cpuset/audio-app/cpus 0-5
@@ -155,8 +160,8 @@ on boot
 
     mkdir /persist/drm 0770 system system
     mkdir /mnt/vendor/persist/bluetooth 0770 bluetooth bluetooth
-    mkdir /persist/misc 0770 system system
-    mkdir /mnt/vendor/persist/alarm 0770 system system
+    mkdir /mnt/vendor/persist/alarm 0777 system system
+    chmod 0666 /mnt/vendor/persist/alarm/data
     mkdir /mnt/vendor/persist/time 0770 system system
     mkdir /mnt/vendor/persist/secnvm 0770 system system
     mkdir /mnt/vendor/persist/iar_db 0770 system system
@@ -171,7 +176,6 @@ on boot
 
     #Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
-
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
@@ -276,7 +280,7 @@ on post-fs-data
 
   # Access permission for input_suspend
     chown system system /sys/class/power_supply/battery/input_suspend
-    chmod 0666 /sys/class/power_supply/battery/input_suspend
+    chmod 0664 /sys/class/power_supply/battery/input_suspend
 
     # Create the directories used by the Wireless subsystem
     mkdir /data/vendor/wifi 0770 wifi wifi
@@ -337,12 +341,11 @@ on post-fs-data
     mkdir /dev/socket/location 0770 gps gps
     mkdir /dev/socket/location/ehub 0770 gps gps
 
-    #Create directories for wifihal services
-    mkdir /dev/socket/wifihal 0770 wifi wifi
-    chmod 2770 /dev/socket/wifihal
+    # Create directories for wifihal services
+    mkdir /dev/socket/wifihal 2770 wifi wifi
 
-    # Create /data/time folder for time-services
-    mkdir /data/vendor/time/ 0700 system system
+    # Create /data/vendor/time folder for time-services
+    mkdir /data/vendor/time 0700 system system
 
     setprop vold.post_fs_data_done 1
 

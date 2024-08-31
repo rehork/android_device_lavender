@@ -8,7 +8,7 @@ allow hal_camera_default mnt_vendor_file:file r_file_perms;
 allow hal_camera_default mnt_vendor_file:dir r_dir_perms;
 
 allow hal_camera_default sysfs_kgsl:file r_file_perms;
-allow hal_camera_default sysfs:file { read };
+allow hal_camera_default sysfs:file { open read };
 
 allow hal_camera_default sysfs_leds:dir r_dir_perms;
 allow hal_camera_default sysfs_leds:file rw_file_perms;

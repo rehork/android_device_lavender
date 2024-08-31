@@ -4,6 +4,8 @@
 # Camera
 /mnt/vendor/persist/camera(/.*)?                                                     u:object_r:camera_persist_file:s0
 
+# blkio
+/dev/blkio(/.*)?                              u:object_r:blkio:s0
 
 # Fingerprint
 /data/gf_data(/.*)?                             u:object_r:fingerprintd_data_file:s0

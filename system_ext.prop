@@ -1,5 +1,6 @@
- DPM
+# DPM
 persist.vendor.dpm.feature=11
+persist.vendor.dpm.loglevel=0
 
 # Bluetooth
 bluetooth.hardware.power.operating_voltage_mv=3300

@@ -16,6 +16,26 @@
     </interface>
 </hal>
 <hal format="hidl" optional="true">
+        <name>android.frameworks.sensorservice</name>
+        <version>1.0</version>
+        <interface>
+            <name>ISensorManager</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>ISensors</name>
+            <instance>default</instance>
+        </interface>
+</hal>
+<hal format="hidl" optional="true">
+        <name>android.hardware.renderscript</name>
+        <version>1.0</version>
+        <interface>
+            <name>IDevice</name>
+            <instance>default</instance>
+        </interface>
+</hal>
+<hal format="hidl" optional="true">
     <name>android.hardware.bluetooth.a2dp</name>
     <version>1.0</version>
     <interface>
@@ -40,6 +60,14 @@
     </interface>
 </hal>
 <hal format="hidl" optional="true">
+        <name>com.dsi.ant</name>
+        <version>1.0</version>
+        <interface>
+            <name>IAnt</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+<hal format="hidl" optional="true">
     <name>android.hardware.bluetooth</name>
     <version>1.0-1</version>
     <interface>
@@ -56,12 +84,50 @@
     </interface>
 </hal>
 <hal format="hidl" optional="true">
+        <name>vendor.lineage.trust</name>
+        <version>1.0</version>
+        <interface>
+            <name>IUsbRestrict</name>
+            <instance>default</instance>
+        </interface>
+</hal>
+<hal format="hidl" optional="true">
     <name>android.hardware.gnss</name>
     <version>1.0</version>
     <version>2.0</version>
     <interface>
         <name>IGnss</name>
         <instance>gnss_vendor</instance>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="aidl" optional="true">
+    <name>android.hardware.graphics.allocator</name>
+    <interface>
+            <name>IAllocator</name>
+            <instance>default</instance>
+    </interface>
+</hal>
+<hal format="aidl" optional="true">
+    <name>android.hardware.vibrator</name>
+    <version>2</version>
+    <interface>
+            <name>IVibrator</name>
+            <instance>default</instance>
+    </interface>
+</hal>
+<hal format="aidl" optional="true">
+    <name>android.hardware.usb</name>
+    <interface>
+            <name>IUsb</name>
+            <instance>default</instance>
+    </interface>
+</hal>
+<hal format="hidl" optional="true">
+    <name>android.hardware.graphics.composer</name>
+    <version>2.0-1</version>
+    <interface>
+        <name>IComposer</name>
         <instance>default</instance>
     </interface>
 </hal>
@@ -116,6 +182,14 @@
             <instance>default</instance>
         </interface>
     </hal>
+   <hal format="hidl" optional="true">
+        <name>android.hardware.media.c2</name>
+        <version>1.0</version>
+        <interface>
+            <name>IComponentStore</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
 <hal format="hidl" optional="true">
     <name>android.hardware.radio</name>
     <version>1.0-2</version>
@@ -140,10 +214,38 @@
     </interface>
 </hal>
 <hal format="aidl" optional="true">
+    <name>android.hardware.health</name>
+    <interface>
+        <name>IHealth</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="aidl" optional="true">
     <name>android.hardware.vibrator</name>
-     <version>1-2</version>
     <interface>
         <name>IVibrator</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="aidl" optional="true">
+    <name>android.hardware.vibrator</name>
+    <interface>
+        <name>IVibratorManager</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="aidl" optional="true">
+    <name>android.hardware.sensors</name>
+    <interface>
+        <name>ISensors</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="hidl" optional="true">
+    <name>motorola.hardware.health</name>
+    <version>1.0</version>
+    <interface>
+        <name>IMotHealth</name>
         <instance>default</instance>
     </interface>
 </hal>
@@ -151,6 +253,45 @@
     <name>android.hardware.wifi.hostapd</name>
     <interface>
         <name>IHostapd</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="aidl" optional="true">
+    <name>android.hardware.ir</name>
+    <interface>
+        <name>IConsumerIr</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="hidl" optional="true">
+    <name>android.hardware.ir</name>
+    <version>1.0</version>
+    <interface>
+        <name>IConsumerIr</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="hidl" optional="true">
+    <name>android.hardware.weaver</name>
+    <version>1.0</version>
+    <interface>
+        <name>IWeaver</name>
+        <instance>default</instance>
+    </interface>
+    </hal>
+<hal format="hidl" optional="true">
+    <name>android.hardware.thermal</name>
+    <version>1.0</version>
+    <interface>
+        <name>IThermal</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="hidl" optional="true">
+    <name>android.hardware.configstore</name>
+    <version>1.0-1</version>
+    <interface>
+        <name>ISurfaceFlingerConfigs</name>
         <instance>default</instance>
     </interface>
 </hal>
@@ -173,6 +314,18 @@
     <name>com.fingerprints.extension</name>
     <version>2.0</version>
     <interface>
+        <name>IFingerprintAuthenticator</name>
+        <instance>default</instance>
+    </interface>
+    <interface>
+        <name>IFingerprintCalibration</name>
+        <instance>default</instance>
+    </interface>
+    <interface>
+        <name>IFingerprintSenseTouch</name>
+        <instance>default</instance>
+    </interface>
+    <interface>
         <name>IFingerprintEngineering</name>
         <instance>default</instance>
     </interface>
@@ -182,6 +335,10 @@
     </interface>
     <interface>
         <name>IFingerprintSensorTest</name>
+        <instance>default</instance>
+    </interface>
+    <interface>
+        <name>IFingerprintRecalibration</name>
         <instance>default</instance>
     </interface>
 </hal>
@@ -199,6 +356,13 @@
     <interface>
         <name>IdpmQmi</name>
         <instance>dpmQmiService</instance>
+    </interface>
+</hal>
+<hal format="aidl" optional="true">
+    <name>android.hardware.net.nlinterceptor</name>
+    <interface>
+         <name>IInterceptor</name>
+         <instance>default</instance>
     </interface>
 </hal>
 <hal format="hidl" optional="true">
@@ -344,6 +508,7 @@
 <hal format="hidl" optional="true">
     <name>vendor.qti.hardware.btconfigstore</name>
     <version>1.0</version>
+    <version>2.0</version>
     <interface>
         <name>IBTConfigStore</name>
         <instance>default</instance>
@@ -357,6 +522,13 @@
         <instance>default</instance>
     </interface>
 </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.gnss</name>
+        <interface>
+            <name>ILocAidlGnss</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
 <hal format="hidl" optional="true">
     <name>vendor.qti.hardware.capabilityconfigstore</name>
     <version>1.0</version>
@@ -391,6 +563,14 @@
         <instance>slot2</instance>
     </interface>
 </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.qti.hardware.camera.postproc</name>
+        <version>1.0</version>
+        <interface>
+            <name>IPostProcService</name>
+            <instance>camerapostprocservice</instance>
+        </interface>
+    </hal>
 <hal format="hidl" optional="true">
     <name>vendor.qti.hardware.factory</name>
     <version>1.1</version>
@@ -470,6 +650,21 @@
         <instance>UimLpa1</instance>
     </interface>
 </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.hardware.radio.am</name>
+        <interface>
+            <name>IQcRilAudio</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.hardware.radio.atcmdfwd</name>
+        <interface>
+            <name>IAtCmdFwd</name>
+            <instance>AtCmdFwdAidl</instance>
+        </interface>
+    </hal>
 <hal format="hidl" optional="true">
     <name>vendor.qti.hardware.radio.qcrilhook</name>
     <version>1.0</version>
@@ -479,6 +674,21 @@
         <instance>oemhook1</instance>
     </interface>
 </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.hardware.radio.internal.deviceinfo</name>
+        <interface>
+            <name>IDeviceInfo</name>
+            <instance>deviceinfo</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.hardware.radio.qcrilhook</name>
+        <interface>
+            <name>IQtiOemHook</name>
+            <instance>oemhook0</instance>
+            <instance>oemhook1</instance>
+        </interface>
+    </hal>
 <hal format="hidl" optional="true">
     <name>vendor.qti.hardware.radio.qtiradio</name>
     <version>1.0</version>
@@ -489,6 +699,14 @@
         <instance>slot2</instance>
     </interface>
 </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.hardware.radio.qtiradio</name>
+        <interface>
+            <name>IQtiRadioStable</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
 <hal format="hidl" optional="true">
     <name>vendor.qti.hardware.radio.uim</name>
     <version>1.0-2</version>
@@ -535,6 +753,7 @@
 <hal format="hidl" optional="true">
     <name>android.hardware.drm</name>
     <version>1.0</version>
+    <version>1.0-3</version>
     <interface>
         <name>IDrmFactory</name>
         <instance>widevine</instance>
@@ -556,6 +775,23 @@
         <instance>default</instance>
     </interface>
 </hal>
+<hal format="aidl" optional="true">
+    <name>android.hardware.light</name>
+	<version>1</version>
+    <interface>
+        <name>ILights</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="hidl" optional="true">
+    <name>android.hardware.secure_element</name>
+    <version>1.0-2</version>
+    <interface>
+        <name>ISecureElement</name>
+        <instance>SIM1</instance>
+        <instance>SIM2</instance>
+    </interface>
+</hal>
 <hal format="hidl" optional="true">
     <name>vendor.qti.imsrtpservice</name>
     <version>3.0</version>
@@ -565,13 +801,26 @@
     </interface>
 </hal>
 <hal format="aidl" optional="true">
+    <name>android.system.keystore2</name>
+    <interface>
+        <name>IKeystoreService</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="aidl" optional="true">
     <name>android.hardware.power.stats</name>
-	<version>1-2</version>
     <interface>
         <name>IPower</name>
         <instance>default</instance>
     </interface>
 </hal>
+    <hal format="aidl" optional="true">
+    <name>android.hardware.gnss</name>
+    <interface>
+        <name>IGnss</name>
+        <instance>default</instance>
+    </interface>
+    </hal>
 <hal format="hidl" optional="true">
     <name>vendor.qti.hardware.radio.internal.deviceinfo</name>
     <version>1.0</version>
@@ -580,4 +829,45 @@
         <instance>deviceinfo</instance>
     </interface>
 </hal>
+    <hal format="aidl" optional="true">
+        <name>android.hardware.input.processor</name>
+        <interface>
+            <name>IInputProcessor</name>
+            <instance>default</instance>
+        </interface>
+    </hal>    
+<hal format="aidl" optional="true">
+        <name>android.hardware.radio.data</name>
+        <fqname>IRadioData/slot1</fqname>
+        <fqname>IRadioData/slot2</fqname>
+</hal>
+    <hal format="aidl" optional="true">
+        <name>android.hardware.radio.voice</name>
+        <fqname>IRadioVoice/slot1</fqname>
+        <fqname>IRadioVoice/slot2</fqname>
+    </hal>
+        <hal format="aidl" optional="true">
+        <name>android.hardware.radio.modem</name>
+        <fqname>IRadioModem/slot1</fqname>
+        <fqname>IRadioModem/slot2</fqname>
+    </hal>
+        <hal format="aidl" optional="true">
+        <name>android.hardware.radio.network</name>
+        <fqname>IRadioNetwork/slot1</fqname>
+        <fqname>IRadioNetwork/slot2</fqname>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>android.hardware.radio.messaging</name>
+        <fqname>IRadioMessaging/slot1</fqname>
+        <fqname>IRadioMessaging/slot2</fqname>
+    </hal>
+     <hal format="aidl" optional="true">
+        <name>android.hardware.radio.sim</name>
+        <fqname>IRadioSim/slot1</fqname>
+        <fqname>IRadioSim/slot2</fqname>
+    </hal>
+     <hal format="aidl" optional="true">
+        <name>android.hardware.radio.config</name>
+        <fqname>IRadioConfig/default</fqname>
+    </hal>
 </compatibility-matrix>

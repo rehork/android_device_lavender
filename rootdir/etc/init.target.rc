@@ -27,6 +27,10 @@
 #
 #
 
+on early-init
+    mount debugfs debugfs /sys/kernel/debug
+    chmod 0755 /sys/kernel/debug
+
 on init
     # Alarm
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
@@ -133,8 +137,8 @@ on boot
     setprop vendor.usb.rmnet.inst.name "rmnet"
     setprop vendor.usb.dpl.inst.name "dpl"
     setprop vendor.usb.qdss.inst.name "qdss"
-    write /sys/module/usb_f_qcrndis/parameters/rndis_dl_max_xfer_size 15916
     setprop sys.usb.configfs 1
+    write /sys/module/usb_f_qcrndis/parameters/rndis_dl_max_xfer_size 15916
 
     # Touchpanel
     chown system system /sys/touchpanel/double_tap
@@ -250,11 +254,11 @@ on property:init.svc.zygote=restarting
 
 on charger
     start qcom-post-boot
-    chown system system /sys/class/leds/red/brightness
-    chmod 0666 /sys/class/leds/red/brightness
     start vendor.hvdcp_opti
     setprop sys.usb.configfs 1
-    start power_off_alarm
+    start vendor.power_off_alarm
+    chown system system /sys/class/leds/red/brightness
+    write /sys/class/leds/red/brightness 255
 
 service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
     class main

@@ -88,7 +88,7 @@ persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled=true
 # Camera
 persist.vendor.camera.preview.ubwc=0
 vendor.video.disable.ubwc=1
-vidc.enc.dcvs.extra-buff-count=2
+vidc.enc.dcvs.extra-buff-count=3
 persist.vendor.camera.isp.clock.optmz=0
 persist.vendor.camera.isp.turbo=1
 persist.vendor.camera.imglib.usefdlite=1
@@ -99,6 +99,8 @@ persist.vendor.camera.model=Redmi Note 7
 persist.vendor.camera.awb.sync=2
 persist.vendor.camera.perflock.enable=0
 
+# Charger
+ro.charger.enable_suspend=true
 
 # Dalvik
 dalvik.vm.dex2oat64.enabled=true
@@ -152,8 +154,13 @@ vendor.gatekeeper.disable_spu=true
 persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1
 persist.dbg.wfc_avail_ovr=1
+persist.vendor.ims.disableADBLogs=1
+persist.vendor.ims.disableDebugLogs=1
+persist.vendor.ims.disableIMSLogs=1
+persist.vendor.ims.disableQXDMLogs=1
 
 # Media
+persist.mm.enable.prefetch=true
 debug.stagefright.omx_default_rank.sw-audio=1
 debug.stagefright.omx_default_rank=0
 media.stagefright.thumbnail.prefer_hw_codecs=true
@@ -173,7 +180,6 @@ ro.netflix.bsp_rev=Q660-13149-1
 
 # Network manager
 ro.telephony.iwlan_operation_mode=legacy
-
 
 # Perf
 ro.vendor.perf-hal.ver=2.2
