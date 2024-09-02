@@ -4,7 +4,7 @@ vendor.audio_hal.period_size=240
 ro.vendor.audio.sdk.fluencetype=fluence
 persist.audio.fluence.voicecomm=true
 persist.vendor.audio.fluence.voicecall=true
-persist.vendor.audio.fluence.voicerec=true
+persist.vendor.audio.fluence.voicerec=false
 persist.vendor.audio.fluence.speaker=true
 vendor.audio.tunnel.encode=false
 persist.vendor.audio.ras.enabled=false
@@ -80,7 +80,7 @@ ro.config.vc_call_vol_steps=15
 vendor.audio.adm.buffering.ms=6
 
 # Bluetooth
-vendor.qcom.bluetooth.soc=cherokee 
+vendor.qcom.bluetooth.soc=cherokee
 persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac
 persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled=true
 
@@ -236,6 +236,9 @@ ro.surface_flinger.force_hwc_copy_for_virtual_displays=true
 ro.surface_flinger.max_virtual_display_dimension=4096
 
 # USB
+vendor.usb.rmnet.func.name=rmnet_bam
+vendor.usb.rmnet.inst.name=rmnet
+vendor.usb.rndis.func.name=rndis_bam
 vendor.usb.product_string=Redmi Note 7
 vendor.usb.use_gadget_hal=0
 

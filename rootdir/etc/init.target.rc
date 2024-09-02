@@ -129,7 +129,7 @@ on boot
     mkdir /data/vendor/camera 0770 camera camera
 
 #Load WLAN driver
-   #insmod /vendor/lib/modules/qca_cld3_wlan.ko
+   insmod /vendor/lib/modules/wlan.ko
 
 #USB controller configuration
     setprop vendor.usb.rndis.func.name "rndis_bam"
@@ -137,6 +137,7 @@ on boot
     setprop vendor.usb.rmnet.inst.name "rmnet"
     setprop vendor.usb.dpl.inst.name "dpl"
     setprop vendor.usb.qdss.inst.name "qdss"
+    setprop vendor.usb.controller a800000.dwc3
     setprop sys.usb.configfs 1
     write /sys/module/usb_f_qcrndis/parameters/rndis_dl_max_xfer_size 15916
 
@@ -255,10 +256,11 @@ on property:init.svc.zygote=restarting
 on charger
     start qcom-post-boot
     start vendor.hvdcp_opti
+    setprop vendor.usb.controller a800000.dwc3
     setprop sys.usb.configfs 1
     start vendor.power_off_alarm
-    chown system system /sys/class/leds/red/brightness
-    write /sys/class/leds/red/brightness 255
+    chown system system /sys/class/leds/white/brightness
+    write /sys/class/leds/white/brightness 255
 
 service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
     class main

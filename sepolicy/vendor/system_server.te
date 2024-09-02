@@ -1,9 +1,9 @@
-allow system_server app_zygote:process { getpgid };
 dontaudit system_server sysfs:file { read open getattr };
 allow system_server unlabeled:file { write };
+allow system_server proc_stat:file { read };
 allow system_server sysfs_battery_supply:file { getattr open read write };
 allow system_server sysfs_usb_supply:file { getattr open read write };
-
+dontaudit system_server sysfs:file { read open getattr };
 # /proc/last_kmsg
 allow system_server proc_last_kmsg:file r_file_perms;
 dontaudit system_server debugfs_wakeup_sources:file { read };

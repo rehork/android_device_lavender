@@ -10,7 +10,6 @@ allow adsprpcd system_file:dir r_dir_perms;
 allow adsprpcd vendor_file:dir r_dir_perms;
 
 #r_dir_file(adsprpcd, sysfs_soc)
-
 # For reading dir/files on /dsp
 r_dir_file(adsprpcd, adsprpcd_file)
 

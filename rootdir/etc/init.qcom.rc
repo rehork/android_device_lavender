@@ -65,14 +65,6 @@ on init
  # Change permissions for /dev/diag
     chmod 0666 /dev/diag
 
-on late-init
-    # Start services for bootanim
-    start surfaceflinger
-    start bootanim
-    start vendor.hwcomposer-2-3
-    start vendor.configstore-hal
-    start vendor.qti.hardware.display.allocator
-
 on fs
     mkdir /mnt/vendor/persist 0771 root system
     chown root system /mnt/vendor/persist
@@ -89,8 +81,6 @@ on post-fs
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
-    # Allow subsystem (modem etc) debugging
-    #write /sys/kernel/debug/bootkpi/kpi_values "M - Start adsp"
     write /sys/kernel/boot_adsp/boot 1
     write /sys/kernel/boot_cdsp/boot 1
     write /sys/devices/virtual/npu/msm_npu/boot 1
@@ -160,6 +150,7 @@ on boot
 
     mkdir /persist/drm 0770 system system
     mkdir /mnt/vendor/persist/bluetooth 0770 bluetooth bluetooth
+    mkdir /persist/misc 0770 system system
     mkdir /mnt/vendor/persist/alarm 0777 system system
     chmod 0666 /mnt/vendor/persist/alarm/data
     mkdir /mnt/vendor/persist/time 0770 system system
@@ -471,7 +462,6 @@ on property:vendor.radio.atfwd.start=false
 on property:vendor.media.target.version=*
     setprop vendor.sys.media.target.version ${vendor.media.target.version}
 
-
 service qcom-c_main-sh /vendor/bin/init.class_main.sh
     class main
     user root
@@ -509,7 +499,7 @@ service vendor.tftp_server /vendor/bin/tftp_server
    class core
    user root
    group root system
-    task_profiles ServiceCapacityLow
+   task_profiles ServiceCapacityLow
 
 
 service vendor.sensors.qti /vendor/bin/sensors.qti
@@ -557,7 +547,6 @@ service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     task_profiles ServiceCapacityLow
     disabled
     oneshot
-
 
 on property:sys.boot_completed=1
     start qcom-post-boot
