@@ -42,7 +42,7 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/kgsl-2d1             0666   root       root
 /dev/ion                  0664   system     system
 /dev/membuf               0664   system     system
-/dev/mem_buf_vm/*         0660   system     system
+/dev/mem_buf_vm/*         0444   system     system
 /dev/dma_heap/qcom,*      0444   system     system
 /dev/rtc0                 0660   system     system
 /dev/smd0                 0660   system     system
@@ -61,6 +61,7 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/ipa_adpl             0660   system     oem_2905
 /dev/synx_device          0660   root       camera
 /dev/hab                  0666   system     system
+/dev/iio:device*          0664   system     system
 /dev/hgsl                 0666   system     system
 
 #permissions for CSVT
@@ -159,7 +160,6 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/adsprpc-smd-secure   0644   system     system
 /dev/system_health_monitor 0644  radio      system
 /dev/mdss_rotator         0664   system     system
-/dev/cpu_dma_latency      0660   system     system
 
 #QDSS
 /dev/byte-cntr            0660   system    oem_2902
@@ -190,7 +190,7 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/msm_vidc_dec_sec     0660   system     audio
 /dev/msm_vidc_enc         0660   system     audio
 /dev/msm_rotator          0660   system     system
-/dev/hw_random            0440   root       system
+/dev/hw_random            0600   root       root
 /dev/sdsprpc-smd          0660   system     system
 
 #permissions for audio

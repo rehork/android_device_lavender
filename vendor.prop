@@ -174,7 +174,6 @@ media.stagefright.enable-qcp=true
 media.stagefright.enable-scan=true
 
 
-
 # Netflix custom property
 ro.netflix.bsp_rev=Q660-13149-1
 
@@ -244,6 +243,9 @@ vendor.usb.use_gadget_hal=0
 
 # Time
 persist.vendor.delta_time.enable=true
+
+# Watchdog
+ro.hw_timeout_multiplier=3
 
 # Zygote
 zygote.critical_window.minute=10
