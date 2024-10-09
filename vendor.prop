@@ -80,6 +80,8 @@ ro.config.vc_call_vol_steps=15
 vendor.audio.adm.buffering.ms=6
 
 # Bluetooth
+bluetooth.device.class_of_device=90,2,12
+bluetooth.hardware.power.operating_voltage_mv=3700
 vendor.qcom.bluetooth.soc=cherokee
 persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac
 persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled=true
@@ -110,6 +112,7 @@ dalvik.vm.systemuicompilerfilter=speed
 debug.sf.enable_egl_image_tracker=true
 persist.log.tag.OpenGLRenderer=S
 debug.sf.enable_gl_backpressure=0
+debug.sf.enable_transaction_tracing=false
 debug.mdpcomp.logs=0
 debug.sf.recomputecrop=0
 debug.sf.frame_rate_multiple_threshold=60
@@ -124,12 +127,19 @@ ro.vendor.display.cabl=0
 vendor.display.disable_skip_validate=1
 vendor.display.enable_default_color_mode=1
 vendor.display.use_smooth_motion=1
+vendor.gralloc.enable_fb_ubwc=1
 vendor.display.disable_rotator_downscale=1
 vendor.display.disable_scaler=0
 vendor.gralloc.disable_ahardware_buffer=1
 debug.sf.treat_170m_as_sRGB=1
 ro.surface_flinger.enable_frame_rate_override=false
 
+
+# Disable vsync for cpu rendered apps
+debug.cpurend.vsync=false
+
+# DPM
+persist.vendor.dpm.loglevel=0
 
 # DRM
 drm.service.enabled=true
@@ -167,12 +177,6 @@ media.stagefright.thumbnail.prefer_hw_codecs=true
 vendor.vidc.dec.enable.downscalar=1
 vendor.vidc.enc.disable_bframes=1
 vendor.vidc.enc.disable.pq=true
-media.stagefright.enable-aac=true
-media.stagefright.enable-http=true
-media.stagefright.enable-player=true
-media.stagefright.enable-qcp=true
-media.stagefright.enable-scan=true
-
 
 # Netflix custom property
 ro.netflix.bsp_rev=Q660-13149-1
@@ -181,8 +185,10 @@ ro.netflix.bsp_rev=Q660-13149-1
 ro.telephony.iwlan_operation_mode=legacy
 
 # Perf
-ro.vendor.perf-hal.ver=2.2
 ro.vendor.extension_library=libqti-perfd-client.so
+
+# Disable Skia tracing by default
+debug.hwui.skia_atrace_enabled=false
 
 # Radio
 persist.radio.multisim.config=dsds
@@ -195,6 +201,7 @@ persist.vendor.radio.data_con_rprt=1
 persist.vendor.radio.mt_sms_ack=30
 persist.vendor.radio.rat_on=combine
 persist.vendor.radio.sib16_support=1
+ro.telephony.block_binder_thread_on_incoming_calls=false
 ro.telephony.default_network=22,22
 ro.vendor.use_data_netmgrd=true
 

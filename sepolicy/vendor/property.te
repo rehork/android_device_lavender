@@ -2,4 +2,3 @@ type hal_fingerprint_prop, property_type;
 type thermal_engine_prop, property_type;
 type vendor_power_prop, property_type;
 type dirac_prop, property_type;
-type qemu_hw_mainkeys_prop, property_type;

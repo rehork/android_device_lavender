@@ -6,3 +6,7 @@ allow hal_thermal_default sysfs_thermal:file w_file_perms;
 
 # netlink access
 allow hal_thermal_default self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
+allow hal_thermal_default self:netlink_generic_socket create_socket_perms_no_ioctl;
+
+binder_call(hal_thermal_default, servicemanager)
+binder_call(hal_thermal_default, hal_power_default)

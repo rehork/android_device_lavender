@@ -103,10 +103,20 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml
 
+PRODUCT_COPY_FILES += \
+    frameworks/av/services/audiopolicy/enginedefault/config/example/phone/audio_policy_engine_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_engine_configuration.xml \
+    frameworks/av/services/audiopolicy/enginedefault/config/example/phone/audio_policy_engine_default_stream_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_engine_default_stream_volumes.xml \
+    frameworks/av/services/audiopolicy/enginedefault/config/example/phone/audio_policy_engine_product_strategies.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_engine_product_strategies.xml \
+    frameworks/av/services/audiopolicy/enginedefault/config/example/phone/audio_policy_engine_stream_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_engine_stream_volumes.xml
+
 # ANT+
 PRODUCT_PACKAGES += \
     AntHalService-Soong \
     com.dsi.ant@1.0.vendor
+
+# ART
+USE_DEX2OAT_DEBUG := false
+WITH_DEXPREOPT_DEBUG_INFO := false
 
 # Biometrics
 PRODUCT_PACKAGES += \
@@ -206,6 +216,10 @@ PRODUCT_PACKAGES += \
     android.frameworks.displayservice@1.0.vendor \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.allocator@3.0 \
+    android.hardware.graphics.allocator@4.0 \
+    android.hardware.graphics.allocator@3.0.vendor \
+    android.hardware.graphics.allocator@4.0.vendor \
     android.hardware.graphics.mapper@2.0-impl-2.1 \
     android.hardware.graphics.composer@2.1-service \
     android.hardware.memtrack@1.0-impl \
@@ -383,6 +397,46 @@ PRODUCT_PACKAGES += \
     libstagefrighthw \
     libvorbisidec.vendor \
     libvpx.vendor
+
+
+# Media C2
+PRODUCT_PACKAGES += \
+    android.hardware.media.c2@1.2.vendor
+
+PRODUCT_PACKAGES += \
+    libcodec2_soft_aacdec \
+    libcodec2_soft_aacenc \
+    libcodec2_soft_amrnbdec \
+    libcodec2_soft_amrwbdec \
+    libcodec2_soft_amrnbenc \
+    libcodec2_soft_amrwbenc \
+    libcodec2_soft_av1dec_aom \
+    libcodec2_soft_av1dec_gav1 \
+    libcodec2_soft_avcdec \
+    libcodec2_soft_avcenc \
+    libcodec2_soft_common \
+    libcodec2_soft_flacdec \
+    libcodec2_soft_flacenc \
+    libcodec2_soft_g711alawdec \
+    libcodec2_soft_g711mlawdec \
+    libcodec2_soft_gsmdec \
+    libcodec2_soft_h263dec \
+    libcodec2_soft_h263enc \
+    libcodec2_soft_hevcdec \
+    libcodec2_soft_hevcenc \
+    libcodec2_soft_mp3dec \
+    libcodec2_soft_mpeg2dec \
+    libcodec2_soft_mpeg4dec \
+    libcodec2_soft_mpeg4enc \
+    libcodec2_soft_opusdec \
+    libcodec2_soft_opusenc \
+    libcodec2_soft_rawdec \
+    libcodec2_soft_vorbisdec \
+    libcodec2_soft_vp8dec \
+    libcodec2_soft_vp8enc \
+    libcodec2_soft_vp9dec \
+    libcodec2_soft_vp9enc \
+    libcodec2_soft_xaacdec
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
