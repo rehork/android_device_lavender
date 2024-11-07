@@ -107,6 +107,8 @@ ro.charger.enable_suspend=true
 # Dalvik
 dalvik.vm.dex2oat64.enabled=true
 dalvik.vm.systemuicompilerfilter=speed
+dalvik.vm.dex2oat-minidebuginfo=false
+dalvik.vm.minidebuginfo=false
 
 # Display
 debug.sf.enable_egl_image_tracker=true

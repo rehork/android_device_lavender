@@ -36,6 +36,11 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>AtCmdFwdService</instance>
         </interface>
     </hal>
+    <hal format="aidl">
+        <name>vendor.qti.hardware.radio.atcmdfwd</name>
+        <version>1</version>
+        <fqname>IAtCmdFwd/AtCmdFwdAidl</fqname>
+    </hal>
     <!--Sigma hal-->
     <hal format="hidl">
         <name>vendor.qti.hardware.sigma_miracast</name>
