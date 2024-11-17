@@ -81,7 +81,7 @@ vendor.audio.adm.buffering.ms=6
 
 # Bluetooth
 bluetooth.device.class_of_device=90,2,12
-bluetooth.hardware.power.operating_voltage_mv=3700
+bluetooth.hardware.power.operating_voltage_mv=3300
 vendor.qcom.bluetooth.soc=cherokee
 persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac
 persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled=true
@@ -179,6 +179,9 @@ media.stagefright.thumbnail.prefer_hw_codecs=true
 vendor.vidc.dec.enable.downscalar=1
 vendor.vidc.enc.disable_bframes=1
 vendor.vidc.enc.disable.pq=true
+
+# Multi-Gen LRU
+persist.device_config.mglru_native.lru_gen_config=core
 
 # Netflix custom property
 ro.netflix.bsp_rev=Q660-13149-1

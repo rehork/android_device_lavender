@@ -27,7 +27,6 @@ PRODUCT_PACKAGES += \
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
-    frameworks/native/data/etc/android.hardware.audio.pro.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.pro.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
@@ -63,7 +62,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.software.verified_boot.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.verified_boot.xml \
     frameworks/native/data/etc/android.software.vulkan.deqp.level-2020-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
-    frameworks/native/data/etc/android.software.freeform_window_management.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.freeform_window_management.xml
+    frameworks/native/data/etc/android.software.freeform_window_management.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.freeform_window_management.xml\
+    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml
 
 
 # For android_filesystem_config.h
@@ -128,8 +129,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio@2.0-impl \
     android.hardware.bluetooth.audio@2.1-impl \
-    android.hardware.bluetooth.audio@2.0-impl \
-    android.hardware.bluetooth.audio@2.1-impl \
     android.hardware.bluetooth.a2dp@1.0 \
     android.hardware.bluetooth.a2dp@1.0.vendor \
     android.hardware.bluetooth.a2dp@1.0-impl.mock \
@@ -152,6 +151,7 @@ PRODUCT_COPY_FILES += \
 
 
 PRODUCT_PACKAGES += \
+    android.frameworks.sensorservice@1.0.vendor \
     android.hardware.camera.device@3.5:64 \
     android.hardware.camera.provider@2.6:64 \
     android.hardware.camera.provider@2.4-impl:32 \
@@ -230,11 +230,14 @@ PRODUCT_PACKAGES += \
     vendor.display.config@2.0 \
     vendor.display.config@2.0.vendor
 
-
-
 # Display Device Config
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/displayconfig/display_id_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_id_0.xml
+
+# Enable updating of APEXes
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
+OVERRIDE_PRODUCT_COMPRESSED_APEX := false
 
 # DPM
 PRODUCT_PACKAGES += \
@@ -290,7 +293,7 @@ PRODUCT_COPY_FILES += \
 # Healthd
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
-    android.hardware.health@2.0.vendor \
+    android.hardware.health@2.1.vendor \
     android.hardware.health@2.1-impl.recovery \
     android.hardware.health@2.1-service
 
@@ -306,7 +309,6 @@ PRODUCT_PACKAGES += \
     libhidltransport.vendor \
     libhwbinder \
     libhwbinder.vendor
-
 
 # IDC
 PRODUCT_COPY_FILES += \
@@ -460,16 +462,7 @@ PRODUCT_PACKAGES += \
 
 # Network
 PRODUCT_PACKAGES += \
-    android.hardware.neuralnetworks@1.0 \
-    android.hardware.neuralnetworks@1.0.vendor \
-    android.hardware.neuralnetworks@1.1 \
-    android.hardware.neuralnetworks@1.1.vendor \
-    android.hardware.neuralnetworks@1.2 \
-    android.hardware.neuralnetworks@1.3 \
     android.hardware.neuralnetworks@1.3.vendor \
-    android.system.net.netd@1.0 \
-    android.system.net.netd@1.0.vendor \
-    android.system.net.netd@1.1 \
     android.system.net.netd@1.1.vendor \
     netutils-wrapper-1.0
 
@@ -572,8 +565,7 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.frameworks.sensorservice@1.0 \
-    android.hardware.sensors@1.0-impl \
+    android.hardware.sensors@1.0-impl:64 \
     android.hardware.sensors@1.0-service \
     libpower.vendor \
     libsensorndkbridge

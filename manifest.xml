@@ -66,6 +66,11 @@
         <fqname>@4.0::IMapper/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>android.hardware.ir</name>
+        <transport>hwbinder</transport>
+        <fqname>@1.0::IConsumerIr/default</fqname>
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.keymaster</name>
         <transport>hwbinder</transport>
         <fqname>@4.0::IKeymasterDevice/default</fqname>
@@ -164,6 +169,7 @@
         <name>vendor.display.config</name>
         <transport>hwbinder</transport>
         <fqname>@1.9::IDisplayConfig/default</fqname>
+        <fqname>@2.0::IDisplayConfig/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.display.postproc</name>

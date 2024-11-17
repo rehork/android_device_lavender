@@ -45,14 +45,23 @@ on init
     chown system system /sys/class/devfreq/soc:qcom,cpubw/min_freq
     chown system system /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/hyst_trigger_count
     chown system system /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/hist_memory
+    chown system system /sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/bw_hwmon/hyst_length
+    chown system system /sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/bw_hwmon/hyst_trigger_count
+    chown system system /sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/bw_hwmon/hist_memory
+    chown system system /dev/cpu_dma_latency
+
 
     chmod 0664 /dev/stune/top-app/schedtune.boost
+    chmod 0664 /dev/cpu_dma_latency
     chmod 0664 /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
     chmod 0664 /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
     chmod 0664 /sys/class/kgsl/kgsl-3d0/force_rail_on
     chmod 0664 /sys/class/kgsl/kgsl-3d0/force_clk_on
     chmod 0664 /sys/class/kgsl/kgsl-3d0/idle_timer
     chmod 0664 /sys/class/devfreq/soc:qcom,cpubw/min_freq
+    chmod 0664 /sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/bw_hwmon/hyst_trigger_count
+    chmod 0664 /sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/bw_hwmon/hist_memory
+    chmod 0664 /sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/bw_hwmon/hyst_length
     chmod 0664 /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/hyst_trigger_count
     chmod 0664 /sys/class/devfreq/soc:qcom,cpubw/bw_hwmon/hist_memory
 
@@ -177,12 +186,11 @@ on property:sys.shutdown.requested=*
 #    write /sys/class/power_supply/battery/charging_enabled 1
 
 service vendor.qseecomd /vendor/bin/qseecomd
-   shutdown critical
    class core
    user root
    group root
 
-service thermal-engine /system/vendor/bin/thermal-engine
+service vendor.thermal-engine /system/vendor/bin/thermal-engine
    class main
    user root
    socket thermal-send-client stream 0666 system system
@@ -191,21 +199,21 @@ service thermal-engine /system/vendor/bin/thermal-engine
    socket thermal-send-rule stream 0660 system system
    group root
 
-service adsprpcd_root /vendor/bin/adsprpcd
-   class main
-   user media
-   group media
+#service adsprpcd_root /vendor/bin/adsprpcd
+#   class main
+#   user media
+#   group media
 
-service adsprpcd /vendor/bin/adsprpcd audiopd
-   class main
-   user media
-   group media
+#service adsprpcd /vendor/bin/adsprpcd audiopd
+#   class main
+#   user media
+#   group media
 
-service vendor.cdsprpcd /vendor/bin/cdsprpcd
-   class main
-   user system
-   group system
-   disabled
+#service vendor.cdsprpcd /vendor/bin/cdsprpcd
+#   class main
+#   user system
+#   group system
+#   disabled
 
 #on boot
 #    insmod /system/lib/modules/adsprpc.ko
@@ -253,11 +261,10 @@ on property:init.svc.zygote=restarting
     stop ppd
 
 on charger
-    start vendor.qcom-post-boot
+    start qcom-post-boot
     start vendor.hvdcp_opti
     setprop vendor.usb.controller a800000.dwc3
     setprop sys.usb.configfs 1
-    start vendor.power_off_alarm
     chown system system /sys/class/leds/white/brightness
     write /sys/class/leds/white/brightness 255
 

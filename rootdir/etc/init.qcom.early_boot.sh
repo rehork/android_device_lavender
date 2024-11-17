@@ -121,6 +121,9 @@ case "$target" in
                      setprop vendor.media.target.version 2
                  fi
                  ;;
+             355|369|377|384)
+                 setprop vendor.chre.enabled 0
+                 ;;
              *)
          esac
          ;;
@@ -459,3 +462,7 @@ if [ -f /sys/class/kgsl/kgsl-3d0/gpu_available_frequencies ]; then
     gpu_freq=`cat /sys/class/kgsl/kgsl-3d0/gpu_available_frequencies` 2> /dev/null
     setprop vendor.gpu.available_frequencies "$gpu_freq"
 fi
+
+# Workaround for cache
+rm -rR /data/resource-cache
+rm -rR /data/system/package_cache

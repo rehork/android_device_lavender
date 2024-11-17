@@ -2,6 +2,7 @@
 vendor.bluetooth.soc=cherokee
 
 # Blur
+ro.launcher.blur.appLaunch=0
 ro.surface_flinger.supports_background_blur=0
 persist.sys.sf.disable_blurs=1
 ro.sf.blurs_are_expensive=1
@@ -104,6 +105,12 @@ persist.mm.enable.prefetch=true
 
 # Disable vsync for cpu rendered apps
 debug.cpurend.vsync=false
+
+# Pre-Rendering
+ro.vendor.perf.scroll_opt=true
+
+# Qcom
+ro.vendor.qti.va_aosp.support=1
 
 # Watchdog
 ro.hw_timeout_multiplier=3

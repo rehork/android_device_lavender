@@ -41,12 +41,8 @@ on early-init
     chown root system /dev/kmsg
     chmod 0620 /dev/kmsg
 
-    # Workarround for cache
-    rm /data/resource-cache
-    rm /data/system/package_cache
-
-    # turn off vblank irq immediately after turning off
-    write /sys/module/drm/parameters/vblankoffdelay -1
+#    # turn off vblank irq immediately after turning off
+#    write /sys/module/drm/parameters/vblankoffdelay -1
 
 on init
     write /dev/cpuset/audio-app/cpus 0-5
@@ -148,6 +144,9 @@ on boot
     # socket files used for internal IPC within QCRIL
     # modules
     mkdir /dev/socket/qmux_radio 2770 radio radio
+
+    chmod 0660 /sys/class/power_supply/battery/charging_enabled
+    chown system system /sys/class/power_supply/battery/charging_enabled
 
     mkdir /persist/drm 0770 system system
     mkdir /mnt/vendor/persist/bluetooth 0770 bluetooth bluetooth
@@ -464,7 +463,6 @@ service vendor.qcom-c_main-sh /vendor/bin/init.class_main.sh
     user root
     group root system
     oneshot
-    task_profiles ServiceCapacityLow
 
 on property:vold.decrypt=trigger_restart_framework
     start vendor.qcom-c_main-sh
@@ -483,7 +481,6 @@ service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class core
     user root
     oneshot
-    task_profiles ServiceCapacityLow
 
 service vendor.rmt_storage /vendor/bin/rmt_storage
     class core
@@ -524,29 +521,31 @@ on property:sys.shutdown.requested=*
     write /sys/kernel/shutdown_wlan/shutdown 1
     stop cnss-daemon
 
-service loc_launcher /system/vendor/bin/loc_launcher
+service vendor.loc_launcher /system/vendor/bin/loc_launcher
     class late_start
     user gps
     group gps
     task_profiles ServiceCapacityLow
 
-service qcom-sh /vendor/bin/init.qcom.sh
+on property:persist.sys.xtra-daemon.enabled=*
+    restart vendor.loc_launcher
+
+
+service vendor.qcom-sh /vendor/bin/init.qcom.sh
     class late_start
     user root
     group root system radio
     oneshot
-    task_profiles ServiceCapacityLow
 
-service vendor.qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
+service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     class late_start
     user root
     group root system wakelock graphics
-    task_profiles ServiceCapacityLow
     disabled
     oneshot
 
 on property:sys.boot_completed=1
-    start vendor.qcom-post-boot
+    start qcom-post-boot
 
 on property:ro.vendor.ril.mbn_copy_completed=1
     write /data/vendor/radio/copy_complete 1
@@ -607,11 +606,20 @@ service vendor.msm_irqbl_sdm630 /vendor/bin/msm_irqbalance -f /system/vendor/etc
 
 on charger
     setprop persist.sys.usb.config mass_storage
-    start vendor.qcom-post-boot
+    start qcom-post-boot
     start vendor.power_off_alarm
 
 on property:vendor.display.lcd_density=*
     setprop ro.sf.lcd_density ${vendor.display.lcd_density}
+
+
+#add poweroffhandler
+service poweroffhandler /system/vendor/bin/poweroffhandler
+    class core
+    user media
+    group graphics audio
+    disabled
+    oneshot
 
 # Set vendor-ril lib path based on Meta version
 on property:vendor.rild.libpath=*
@@ -627,6 +635,17 @@ service vendor.power_off_alarm /vendor/bin/power_off_alarm
     disabled
     oneshot
 
+service chre /vendor/bin/chre
+    class late_start
+    user system
+    group system
+    socket chre seqpacket 0660 root system
+    shutdown critical
+
+on property:vendor.chre.enabled=0
+   stop chre
+
+
 #service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
 #    class main
 #    task_profiles ServiceCapacityLow
@@ -641,6 +660,14 @@ on property:vendor.opengles.version=*
 #Set gpu available frequencies property
 on property:vendor.gpu.available_frequencies=*
     setprop ro.vendor.gpu.available_frequencies ${vendor.gpu.available_frequencies}
+
+service vendor.contexthub-hal-1-0 /vendor/bin/hw/android.hardware.contexthub@1.0-service
+    override
+    class hal
+    interface android.hardware.contexthub@1.0::IContexthub default
+    user system
+    group system
+    disabled   
 
 service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     override
