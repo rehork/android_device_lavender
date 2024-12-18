@@ -74,6 +74,9 @@ vendor.audio.feature.vbat.enable=true
 vendor.audio.feature.wsa.enable=false
 vendor.audio.feature.audiozoom.enable=false
 vendor.audio.feature.snd_mon.enable=true
+ro.vendor.audio.voice.volume.boost=manual
+# RIL
+vendor.rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so
 
 ro.config.media_vol_steps=25
 ro.config.vc_call_vol_steps=15

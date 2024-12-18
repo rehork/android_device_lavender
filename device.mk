@@ -7,6 +7,9 @@
 # Inherit the proprietary files
 $(call inherit-product, vendor/xiaomi/lavender/lavender-vendor.mk)
 
+# Enable project quotas and casefolding for emulated storage without sdcardfs
+#$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
+
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080

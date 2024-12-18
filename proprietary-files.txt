@@ -119,6 +119,8 @@ vendor/lib/hw/camera.sdm660.so|50e671432994ec9085810e5fa9c9c6619262bc19
 vendor/lib/libFaceGrade.so|ab36b265668f77a613719e1b8cedf0b1a0219fa5
 vendor/lib/libMegviiFacepp-0.5.2.so|640676bd292c78197ea963aa7875153fab44a383
 vendor/lib/libSNPE.so|66f23aae6d30b09121f06635c749d6ae47543359
+vendor/lib/libts_face_beautify_hal.so
+vendor/lib/libts_detected_face_hal
 vendor/lib/liboptizoom.so
 vendor/lib/libubifocus.so
 vendor/lib/libmmcamera_trueportrait_lib.so
@@ -1630,6 +1632,7 @@ vendor/lib64/lib-imsvtcore.so|47d945bf976134fdb57b4f44dd73a1347f2bf421
 vendor/bin/sensors.qti
 vendor/etc/sensors/hals.conf|2be83209bb5319b4a3c75338c24852f89ddc1df7
 vendor/etc/sensors/sensor_def_qcomdev.conf
+vendor/etc/elliptic_sensor.xml
 vendor/lib/hw/activity_recognition.sdm660.so
 vendor/lib/libsensor1.so
 vendor/lib/libsensor_reg.so
