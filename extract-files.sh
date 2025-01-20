@@ -27,11 +27,7 @@ source "${HELPER}"
 DEVICE_BLOB_ROOT="$ANDROID_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
 patchelf --replace-needed libstdc++.so libstdc++_vendor.so "$DEVICE_BLOB_ROOT"/vendor/lib/libts_face_beautify_hal.so
 patchelf --replace-needed libstdc++.so libstdc++_vendor.so "$DEVICE_BLOB_ROOT"/vendor/lib/libts_detected_face_hal.so
-patchelf --replace-needed libstdc++.so libstdc++_vendor.so "$DEVICE_BLOB_ROOT"/vendor/lib/libchromaflash.so
 patchelf --replace-needed libstdc++.so libstdc++_vendor.so "$DEVICE_BLOB_ROOT"/vendor/lib/libmmcamera_ubifocus_lib.so
-patchelf --replace-needed libstdc++.so libstdc++_vendor.so "$DEVICE_BLOB_ROOT"/vendor/lib/liboptizoom.so
-patchelf --replace-needed libstdc++.so libstdc++_vendor.so "$DEVICE_BLOB_ROOT"/vendor/lib/libtrueportrait.so
-patchelf --replace-needed libstdc++.so libstdc++_vendor.so "$DEVICE_BLOB_ROOT"/vendor/lib/libubifocus.so
 
 function blob_fixup() {
     case "${1}" in
@@ -47,15 +43,27 @@ function blob_fixup() {
         system_ext/etc/permissions/qti_libpermissions.xml)
             sed -i "s/name=\"android.hidl.manager-V1.0-java/name=\"android.hidl.manager@1.0-java/g" "${2}"
             ;;
+        vendor/lib/libchromaflash.so)
+            "${PATCHELF}" --replace-needed "libstdc++.so" "libstdc++_vendor.so" "${2}"
+            ;;
+        vendor/lib/liboptizoom.so)
+            "${PATCHELF}" --replace-needed "libstdc++.so" "libstdc++_vendor.so" "${2}"
+            ;;
+        vendor/lib/libubifocus.so)
+            "${PATCHELF}" --replace-needed "libstdc++.so" "libstdc++_vendor.so" "${2}"
+            ;;          
+        vendor/lib/libtrueportrait.so)
+            "${PATCHELF}" --replace-needed "libstdc++.so" "libstdc++_vendor.so" "${2}"
+            ;;                    
         system_ext/lib64/libdpmframework.so)
             for LIBSHIM_DPMFRAMEWORK in $(grep -L "libshim_dpmframework.so" "${2}"); do
-                "${PATCHELF}" --add-needed "libshim_dpmframework.so" "$LIBSHIM_DPMFRAMEWORK"
+            "${PATCHELF}" --add-needed "libshim_dpmframework.so" "$LIBSHIM_DPMFRAMEWORK"
             done
             ;;
         system_ext/lib64/lib-imsvideocodec.so)
-        "${PATCHELF}" --replace-needed "libqdMetaData.so" "libqdMetaData.system.so" "${2}"
-        ${PATCHELF} --add-needed "lib-imsvtshim.so" "${2}"
-        ;;
+           "${PATCHELF}" --replace-needed "libqdMetaData.so" "libqdMetaData.system.so" "${2}"
+           "${PATCHELF}" --add-needed "lib-imsvtshim.so" "${2}"
+            ;;
     esac
 }
 

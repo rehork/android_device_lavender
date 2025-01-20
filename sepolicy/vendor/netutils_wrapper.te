@@ -1,1 +1,1 @@
-allow netutils_wrapper proc_net:file{ getattr  read };
+allow netutils_wrapper proc_net:file{ getattr read };

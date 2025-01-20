@@ -12,14 +12,23 @@ iorapd.perfetto.enable=false
 iorapd.readahead.enable=false
 persist.device_config.runtime_native_boot.iorap_readahead_enable=false
 
-# Charger
-ro.charger.disable_init_blank=true
-ro.charger.enable_suspend=true
+# Bluetooth
+bluetooth.device.class_of_device=90,2,12
 
 # Blur
 ro.surface_flinger.supports_background_blur=0
 
+# Charger
+ro.charger.disable_init_blank=true
+ro.charger.enable_suspend=true
+
+# Incremental FS
+ro.incremental.enable=1
+
 # Radio
+persist.vendor.radio.enable_temp_dds=true
+persist.sys.fflag.override.settings_provider_model=false
+persist.vendor.radio.mt_sms_ack=30
 ro.telephony.block_binder_thread_on_incoming_calls=false
 
 # SkiaGL Threaded

@@ -191,6 +191,13 @@
     <!-- Is the device capable of hot swapping an ICC Card -->
     <bool name="config_hotswapCapable">true</bool>
 
+    <!-- Number of physical SIM slots on the device. This includes both eSIM and pSIM slots, and
+         is not necessarily the same as the number of phones/logical modems supported by the device.
+         For example, a multi-sim device can have 2 phones/logical modems, but 3 physical slots,
+         or a single SIM device can have 1 phones/logical modems, but 2 physical slots (one eSIM
+         and one pSIM) -->
+    <integer name="config_num_physical_slots">2</integer>
+
     <!-- Whether WiFi display is supported by this device.
          There are many prerequisites for this feature to work correctly.
          Here are a few of them:
@@ -271,7 +278,7 @@
     <!-- Indicate whether closing the lid causes the device to go to sleep and opening
          it causes the device to wake up.
          The default is false. -->
-    <bool name="config_lidControlsSleep">false</bool>
+    <bool name="config_lidControlsSleep">true</bool>
 
     <!-- Whether device supports double tap to wake -->
     <bool name="config_supportDoubleTapWake">true</bool>
@@ -355,7 +362,7 @@
     <!-- <string name="config_defaultDialer" translatable="false">org.codeaurora.dialer</string> -->
 
    <!-- Operating volatage for bluetooth controller. 0 by default-->
-   <integer translatable="false" name="config_bluetooth_operating_voltage_mv">3300</integer>
+   <integer translatable="false" name="config_bluetooth_operating_voltage_mv">3700</integer>
    <!-- The duration (in milliseconds) for the outgoing sms authorization request to timeout.-->
    <integer name="config_sms_authorization_timeout_ms">15000</integer>
    <!-- Enable SMS authorization support -->
@@ -433,13 +440,6 @@
     <bool name="config_lineageHealthSupported">true</bool>
     <!-- Auto-brightness sensor type string -->
     <string name="config_displayLightSensorType">"android.sensor.light"</string>
-    <!-- The list of components which should be automatically disabled for a specific device. -->
-    <string-array name="config_deviceDisabledComponents" translatable="false">
-        <item>com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver</item>
-        <item>com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver</item>
-        <item>com.google.android.gms/com.google.android.gms.nearby.messages.service.NearbyMessagesService</item>
-        <item>com.google.android.gms/com.google.android.gms.nearby.discovery.service.DiscoveryService</item>
-    </string-array>
     <!-- List of comma separated package names for which we the system will not show crash like
          tts, etc. dialogs. -->
     <string name="config_appsNotReportingCrashes" translatable="false">com.google.android.tts</string>

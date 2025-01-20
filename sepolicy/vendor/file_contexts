@@ -6,16 +6,19 @@
 
 # blkio
 /dev/blkio(/.*)?                                u:object_r:blkio:s0
+/dev/blkio/background(/.*)?                     u:object_r:blkio_dev:s0
 
 # Block devices
 /dev/block/mmcblk0p1                            u:object_r:sdcard_block_device:s0
 
 # Fingerprint
-/data/gf_data(/.*)?                             u:object_r:fingerprintd_data_file:s0
-/data/vendor/fpc(/.*)?                          u:object_r:fingerprint_vendor_data_file:s0
-/data/vendor/gf_data(/.*)?                      u:object_r:fingerprint_vendor_data_file:s0
-/data/vendor/goodix(/.*)?                       u:object_r:fingerprint_vendor_data_file:s0
-/dev/goodix_fp                                  u:object_r:fingerprint_device:s0
+/data/gf_data(/.*)?                                                                                                               u:object_r:fingerprintd_data_file:s0
+/data/gf_data/auth_ratio_database.db                                                                                              u:object_r:fingerprintd_data_file:s0
+/data/vendor/fpc(/.*)?                                                                                                            u:object_r:fingerprint_vendor_data_file:s0
+/data/vendor/gf_data(/.*)?                                                                                                        u:object_r:fingerprint_vendor_data_file:s0
+/data/vendor/goodix(/.*)?                                                                                                         u:object_r:fingerprint_vendor_data_file:s0
+/dev/goodix_fp                                                                                                                    u:object_r:fingerprint_device:s0
+/data/system/users/[0-9]/settings_fingerprint\.xml                                                                                u:object_r:fingerprintd_data_file:s0
 
 # Firmware
 /firmware                                       u:object_r:firmware_file:s0

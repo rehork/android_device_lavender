@@ -111,7 +111,7 @@
     <hal format="hidl">
         <name>android.hardware.radio.config</name>
         <transport>hwbinder</transport>
-        <fqname>@1.1::IRadioConfig/default</fqname>
+        <fqname>@1.2::IRadioConfig/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.renderscript</name>
@@ -136,9 +136,13 @@
     <hal format="hidl">
         <name>com.fingerprints.extension</name>
         <transport>hwbinder</transport>
-        <fqname>@2.0::IFingerprintEngineering/default</fqname>
-        <fqname>@2.0::IFingerprintNavigation/default</fqname>
-        <fqname>@2.0::IFingerprintSensorTest/default</fqname>
+        <fqname>@1.0::IFingerprintAuthenticator/default</fqname>
+        <fqname>@1.0::IFingerprintCalibration/default</fqname>
+        <fqname>@1.0::IFingerprintEngineering/default</fqname>
+        <fqname>@1.0::IFingerprintNavigation/default</fqname>
+        <fqname>@1.0::IFingerprintRecalibration/default</fqname>
+        <fqname>@1.0::IFingerprintSenseTouch/default</fqname>
+        <fqname>@1.0::IFingerprintSensorTest/default</fqname>
     </hal>
     <hal format="hidl">
         <name>com.qualcomm.qti.ant</name>
@@ -192,7 +196,6 @@
         <name>vendor.qti.data.factory</name>
         <transport>hwbinder</transport>
         <fqname>@2.0::IFactory/default</fqname>
-        <fqname>@2.1::IFactory/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.esepowermanager</name>
@@ -245,11 +248,6 @@
         <name>vendor.qti.hardware.data.latency</name>
         <transport>hwbinder</transport>
         <fqname>@1.0::ILinkLatency/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.factory</name>
-        <transport>hwbinder</transport>
-        <fqname>@1.1::IFactory/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.fm</name>
