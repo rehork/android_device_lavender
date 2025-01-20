@@ -1,2 +1,0 @@
-allow poweroffalarm_app cgroup:file write;
-allow poweroffalarm_app mnt_vendor_file:dir rw_dir_perms;
