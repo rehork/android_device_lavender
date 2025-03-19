@@ -1484,7 +1484,7 @@ vendor/lib64/vendor.display.color@1.1.so|ce0030a7e6593236277962ffff290b834eaf1f2
 vendor/lib64/vendor.display.postproc@1.0.so|0b578a42706c770c6c61eccdee8a9e4c89c08b10
 
 # QMI - from jasmine V11.0.28.0.QDIMIXM
-etc/permissions/qti_permissions.xml:system_ext/etc/permissions/qti_permissions.xml|e6ff4572352b1a4f91b6b9d7cbb1cad9924410a0
+product/etc/permissions/qti_permissions.xml:system_ext/etc/permissions/qti_permissions.xml|e6ff4572352b1a4f91b6b9d7cbb1cad9924410a0
 product/lib64/libdiag_system.so:system_ext/lib64/libdiag_system.so|588e842c56dfba4c978d2ef864a567d9cc0051da
 vendor/bin/irsc_util|4381ded94ac2775cf186c97c7ad6236eaa209eac
 vendor/bin/pd-mapper|d8d15467cc543bf99ebac8391c07ba5d8b7ecdc8
