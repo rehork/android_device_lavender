@@ -466,5 +466,5 @@ if [ -f /sys/class/kgsl/kgsl-3d0/gpu_available_frequencies ]; then
 fi
 
 # Workaround for cache
-rm -rR /data/resource-cache
-rm -rR /data/system/package_cache
+#rm -rR /data/resource-cache
+#rm -rR /data/system/package_cache
