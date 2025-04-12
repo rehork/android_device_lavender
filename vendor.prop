@@ -102,6 +102,10 @@ persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled=true
 # Camera
 vendor.video.disable.ubwc=1
 persist.vendor.camera.preview.ubwc=0
+persist.vendor.camera.isp.clock.optmz=0
+persist.vendor.camera.isp.turbo=1
+persist.vendor.camera.imglib.usefdlite=1
+persist.vendor.camera.expose.aux=1
 persist.vendor.camera.HAL3.enabled=1
 persist.vendor.camera.thirdpartyeis_enabled=1
 persist.vendor.camera.isp.dualisp=1
@@ -134,10 +138,11 @@ dalvik.vm.dex2oat-minidebuginfo=false
 dalvik.vm.minidebuginfo=false
 
 # Display
+debug.sf.hw=1
 debug.sf.disable_backpressure=1
 debug.sf.enable_egl_image_tracker=true
 persist.log.tag.OpenGLRenderer=S
-debug.sf.enable_gl_backpressure=0
+debug.sf.enable_gl_backpressure=1
 debug.sf.enable_transaction_tracing=false
 debug.mdpcomp.logs=0
 debug.sf.recomputecrop=0
@@ -146,8 +151,6 @@ debug.sf.disable_client_composition_cache=1
 vendor.display.disable_metadata_dynamic_fps=1
 vendor.display.disable_partial_split=1
 debug.sf.predict_hwc_composition_strategy=0
-#ro.hardware.egl=adreno
-#ro.hardware.vulkan=adreno
 ro.opengles.version=196610
 ro.vendor.display.ad=1
 ro.vendor.display.ad.sdr_calib_data=/data/vendor/display/ad_calib.cfg
@@ -158,8 +161,8 @@ vendor.display.enable_default_color_mode=1
 vendor.display.use_smooth_motion=1
 vendor.gralloc.enable_fb_ubwc=1
 vendor.display.disable_rotator_downscale=1
-vendor.display.disable_scaler=0
-vendor.gralloc.disable_ahardware_buffer=1
+#vendor.display.disable_scaler=0
+#vendor.gralloc.disable_ahardware_buffer=1
 debug.sf.treat_170m_as_sRGB=1
 ro.surface_flinger.enable_frame_rate_override=false
 
@@ -258,7 +261,7 @@ ro.vendor.sensors.mot_detect=true
 ro.vendor.sensors.smd=false
 
 # Set system properties identifying the chipset
-ro.soc.manufacturer=QTI
+ro.soc.manufacturer=Qualcomm
 ro.soc.model=SDM660
 
 
