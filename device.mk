@@ -246,8 +246,8 @@ PRODUCT_PACKAGES += \
 
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.3 \
     android.hardware.drm@1.3.vendor \
+    android.hardware.drm-service.clearkey \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service
 
@@ -521,10 +521,6 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.config@1.2.vendor \
     android.hardware.radio.deprecated@1.0 \
     android.hardware.radio.deprecated@1.0.vendor \
-    android.hardware.secure_element@1.0 \
-    android.hardware.secure_element@1.0.vendor \
-    android.hardware.secure_element@1.1 \
-    android.hardware.secure_element@1.1.vendor \
     android.hardware.secure_element@1.2 \
     android.hardware.secure_element@1.2.vendor \
     rild \
