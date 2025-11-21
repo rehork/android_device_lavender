@@ -2,6 +2,7 @@
 #persist.sys.usb.config=mtp,adb
 #ro.adb.secure=0
 #ro.debuggable=1
+#ro.secure=0
 
 # App
 ro.launcher.blur.appLaunch=0
@@ -18,6 +19,9 @@ bluetooth.device.class_of_device=90,2,12
 # Blur
 ro.surface_flinger.supports_background_blur=0
 
+# Camera
+persist.camera.perflock.enable=0
+
 # Charger
 ro.charger.disable_init_blank=true
 ro.charger.enable_suspend=true
@@ -25,9 +29,16 @@ ro.charger.enable_suspend=true
 # Incremental FS
 ro.incremental.enable=1
 
+# FUSE
+persist.sys.fuse.passthrough.enable=true
+
+# LMKD
+ro.lmk.kill_heaviest_task=true
+ro.lmk.kill_timeout_ms=100
+
+
 # Radio
-persist.vendor.radio.enable_temp_dds=true
-persist.sys.fflag.override.settings_provider_model=false
+persist.sys.fflag.override.settings_network_and_internet_v2=true
 persist.vendor.radio.mt_sms_ack=30
 ro.telephony.block_binder_thread_on_incoming_calls=false
 

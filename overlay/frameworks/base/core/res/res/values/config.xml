@@ -442,4 +442,6 @@
     <!-- List of comma separated package names for which we the system will not show crash like
          tts, etc. dialogs. -->
     <string name="config_appsNotReportingCrashes" translatable="false">com.google.android.tts</string>
+    <!-- reference volume index for music stream to limit headphone volume and display warning -->
+    <integer name="config_safe_media_volume_index" translatable="false">25</integer>
 </resources>

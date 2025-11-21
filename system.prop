@@ -40,7 +40,7 @@ persist.data.iwlan.enable=true
 
 # Deep Sleep
 pm.sleep_mode=1
-vendor.post_boot.parsed=1
+#vendor.post_boot.parsed=1
 
 # Disable vsync for cpu rendered apps
 debug.cpurend.vsync=false
@@ -70,6 +70,10 @@ persist.log.tag.wificond=S
 persist.log.tag.b/223498680=S
 persist.log.tag.TrafficStats=S
 persist.log.tag.ContrastColorUtil=S
+persist.log.tag.hwcomposer=S
+persist.log.tag.CVP=S
+persist.log.tag.CamX=S
+persist.log.tag.HWUI=S
 
 
 # Feature flags

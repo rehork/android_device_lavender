@@ -18,24 +18,24 @@
 -->
 <resources>
     <!-- Set the automatic brightness mode on by default -->
-    <bool name="def_screen_brightness_automatic_mode">true</bool>
+    <bool name="def_screen_brightness_automatic_mode" translatable="false">true</bool>
 
     <!-- user interface sound effects -->
-    <integer name="def_power_sounds_enabled">0</integer>
-    <integer name="def_lockscreen_sounds_enabled">0</integer>
+    <integer name="def_power_sounds_enabled" translatable="false">0</integer>
+    <integer name="def_lockscreen_sounds_enabled" translatable="false">0</integer>
 
     <!-- Default for Settings.Secure.CHARGING_SOUNDS_ENABLED -->
-    <bool name="def_charging_sounds_enabled">false</bool>
+    <bool name="def_charging_sounds_enabled" translatable="false">false</bool>
 
     <!-- 60 seconds for default screen timeout -->
-    <integer name="def_screen_off_timeout">60000</integer>
+    <integer name="def_screen_off_timeout" translatable="false">60000</integer>
 
     <!-- Enable auto rotation switching -->
-    <bool name="def_accelerometer_rotation">true</bool>
+    <bool name="def_accelerometer_rotation" translatable="false">true</bool>
 
     <!-- Disable UI touch sounds by default -->
-    <bool name="def_sound_effects_enabled">false</bool>
+    <bool name="def_sound_effects_enabled" translatable="false">false</bool>
 
     <!-- Disable UI touch haptic feedback by default -->
-    <bool name="def_haptic_feedback">false</bool>
+    <bool name="def_haptic_feedback" translatable="false">false</bool>
 </resources>

@@ -3627,7 +3627,6 @@ case "$target" in
                     echo "compute" > $latfloor/governor
                     echo 10 > $latfloor/polling_interval
                 done
-
             done
 
             # colcoation v3 disabled
@@ -4686,7 +4685,7 @@ esac
 
 case "$target" in
 	"kona")
-
+	rev=`cat /sys/devices/soc0/revision`
 	ddr_type=`od -An -tx /proc/device-tree/memory/ddr_device_type`
 	ddr_type4="07"
 	ddr_type5="08"
@@ -5202,6 +5201,7 @@ esac
 # Enable Power modes and set the CPU Freq Sampling rates
 case "$target" in
      "msm7627a")
+        start qosmgrd
     echo 1 > /sys/module/pm2/modes/cpu0/standalone_power_collapse/idle_enabled
     echo 1 > /sys/module/pm2/modes/cpu1/standalone_power_collapse/idle_enabled
     echo 1 > /sys/module/pm2/modes/cpu0/standalone_power_collapse/suspend_enabled
@@ -5222,23 +5222,10 @@ case "$target" in
      ;;
 esac
 
-# Install AdrenoTest.apk if not already installed
-if [ -f /data/prebuilt/AdrenoTest.apk ]; then
-    if [ ! -d /data/data/com.qualcomm.adrenotest ]; then
-        pm install /data/prebuilt/AdrenoTest.apk
-    fi
-fi
-
-# Install SWE_Browser.apk if not already installed
-if [ -f /data/prebuilt/SWE_AndroidBrowser.apk ]; then
-    if [ ! -d /data/data/com.android.swe.browser ]; then
-        pm install /data/prebuilt/SWE_AndroidBrowser.apk
-    fi
-fi
-
 # Change adj level and min_free_kbytes setting for lowmemory killer to kick in
 case "$target" in
      "msm8660")
+        start qosmgrd
         echo 0,1,2,4,9,12 > /sys/module/lowmemorykiller/parameters/adj
         echo 5120 > /proc/sys/vm/min_free_kbytes
      ;;
@@ -5316,7 +5303,7 @@ if [ -f /sys/devices/soc0/select_image ]; then
 fi
 
 # Change console log level as per console config property
-# console_config=`getprop persist.console.silent.config`
+# console_config=`getprop vendor.persist.console.silent.config`
 # case "$console_config" in
 #     "1")
 #         echo "Enable console config to $console_config"
@@ -5331,12 +5318,3 @@ fi
 misc_link=$(ls -l /dev/block/bootdevice/by-name/misc)
 real_path=${misc_link##*>}
 setprop persist.vendor.mmi.misc_dev_path $real_path
-
-# set sys.use_fifo_ui prop if eas exist
-    available_governors=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors)
-
-    if echo "$available_governors" | grep schedutil; then
-       echo "schedutil" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-       echo "schedutil" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
-       setprop sys.use_fifo_ui 1
-    fi
