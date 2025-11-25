@@ -151,22 +151,19 @@ service vendor.pd_mapper /vendor/bin/pd-mapper
     class core
     user system
     group system
-    task_profiles ServiceCapacityLow
 
 #Peripheral manager
-service vendor.per_mgr /vendor/bin/pm-service
+service vendor.per_mgr /system/vendor/bin/pm-service
     class core
     user system
     group system net_raw
     ioprio rt 4
-    task_profiles ServiceCapacityLow
 
-service vendor.per_proxy /vendor/bin/pm-proxy
+service vendor.per_proxy /system/vendor/bin/pm-proxy
     class core
     user system
     group system
     disabled
-    task_profiles ServiceCapacityLow
 
 on property:init.svc.vendor.per_mgr=running
     start vendor.per_proxy
@@ -178,9 +175,8 @@ service vendor.qseecomd /vendor/bin/qseecomd
    class core
    user root
    group root
-   task_profiles ServiceCapacityLow
 
-service vendor.thermal-engine /vendor/bin/thermal-engine
+service thermal-engine /system/vendor/bin/thermal-engine
    class main
    user root
    socket thermal-send-client stream 0666 system system
@@ -188,19 +184,16 @@ service vendor.thermal-engine /vendor/bin/thermal-engine
    socket thermal-recv-passive-client stream 0666 system system
    socket thermal-send-rule stream 0660 system system
    group root
-   task_profiles ServiceCapacityLow
 
-service vendor.adsprpcd_root /vendor/bin/adsprpcd
+service adsprpcd_root /vendor/bin/adsprpcd
    class main
    user media
    group media
-   task_profiles ServiceCapacityLow
 
-service vendor.adsprpcd /vendor/bin/adsprpcd audiopd
+service adsprpcd /vendor/bin/adsprpcd audiopd
    class main
    user media
    group media
-   task_profiles ServiceCapacityLow
 
 service vendor.cdsprpcd /vendor/bin/cdsprpcd
    class main
@@ -221,38 +214,37 @@ service vendor.cdsprpcd /vendor/bin/cdsprpcd
 #    chown system drmrpc /sys/devices/f9966000.i2c/i2c-1/1-0020/secure_touch_enable
 #    chown system drmrpc /sys/devices/f9966000.i2c/i2c-1/1-0020/secure_touch
 
-service vendor.ppd /vendor/bin/mm-pp-dpps
+service ppd /system/vendor/bin/mm-pp-dpps
     class late_start
     user system
     group system graphics
     socket pps stream 0660 system system
     disabled
-    task_profiles ServiceCapacityLow
 
 on property:sys.boot_completed=1
     # Enable PowerHAL hint processing
     setprop vendor.powerhal.init 1
 
 on property:init.svc.surfaceflinger=stopped
-    stop vendor.ppd
+    stop ppd
 
 on property:init.svc.surfaceflinger=running
-    start vendor.ppd
+    start ppd
 
 on property:init.svc.surfaceflinger=restarting
-    stop vendor.ppd
+    stop ppd
 
 on property:init.svc.zygote=stopped
-    stop vendor.ppd
+    stop ppd
 
 on property:init.svc.zygote=running
-    start vendor.ppd
+    start ppd
 
 on property:init.svc.zygote=restarting
-    stop vendor.ppd
+    stop ppd
 
 on charger
-    start vendor.qcom-post-boot
+    start qcom-post-boot
     start vendor.hvdcp_opti
     setprop vendor.usb.controller a800000.dwc3
     setprop sys.usb.configfs 1
@@ -263,4 +255,3 @@ service vendor.hvdcp_opti /vendor/bin/hvdcp_opti
     class main
     user root
     group system wakelock
-    task_profiles ServiceCapacityLow
