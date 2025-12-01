@@ -1,2 +1,5 @@
 allow fsck_untrusted sysfs:file { getattr };
 dontaudit fsck_untrusted sysfs:file { read };
+
+# /data/media
+allow fsck_untrusted media_rw_data_file:dir getattr;
