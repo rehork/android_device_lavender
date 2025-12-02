@@ -153,9 +153,7 @@ persist.hwc.enable_vds=0
 debug.gralloc.gfx_ubwc_disable=1
 debug.gralloc.enable_fb_ubwc=0
 sdm.debug.rotator_disable_ubwc=1
-dev.pm.dyn_samplingrate=1
 sdm.debug.disable_skip_validate=1
-ro.colorpick_adjust=true
 vendor.display.disable_skip_validate=1
 debug.sf.enable_hwc_vds=1
 debug.sf.auto_latch_unsignaled=0
@@ -164,7 +162,7 @@ debug.sf.disable_client_composition_cache=1
 debug.sf.predict_hwc_composition_strategy=0
 debug.sf.disable_backpressure=1
 debug.sf.latch_unsignaled=0
-debug.sf.enable_gl_backpressure=1
+debug.sf.enable_gl_backpressure=0
 debug.mdpcomp.logs=0
 debug.sf.recomputecrop=0
 debug.sf.frame_rate_multiple_threshold=60
@@ -177,7 +175,6 @@ ro.vendor.display.ad=1
 ro.vendor.display.ad.sdr_calib_data=/data/vendor/display/ad_calib.cfg
 ro.vendor.display.sensortype=2
 ro.vendor.display.cabl=0
-vendor.display.disable_skip_validate=1
 vendor.display.enable_default_color_mode=1
 vendor.display.use_smooth_motion=1
 vendor.gralloc.enable_fb_ubwc=1
@@ -185,7 +182,6 @@ vendor.display.disable_rotator_downscale=1
 vendor.gralloc.disable_ahardware_buffer=1
 debug.sf.treat_170m_as_sRGB=1
 persist.demo.hdmirotationlock=false
-ro.surface_flinger.enable_frame_rate_override=false
 vendor.display.disable_hw_recovery_dump=1
 vendor.display.disable_scaler=1
 
@@ -209,6 +205,9 @@ ro.apk_verity.mode=2
 # Fwk detect
 ro.vendor.qti.va_aosp.support=1
 
+# GPS
+persist.backup.ntpServer="0.pool.ntp.org"
+
 # Incremental FS
 ro.incremental.enable=1
 
@@ -226,13 +225,12 @@ persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1
 persist.dbg.wfc_avail_ovr=1
 
-# LOG
-
 # Media
 persist.mm.enable.prefetch=true
 debug.stagefright.ccodec=1
 debug.stagefright.omx_default_rank=0
 vendor.media.target.version=2
+vendor.vidc.enc.disable_bframes=1
 vendor.vidc.enc.disable.pq=true
 
 # Multi-Gen LRU
@@ -283,6 +281,8 @@ ro.vendor.sensors.smd=false
 ro.soc.manufacturer=Qualcomm
 ro.soc.model=SDM660
 
+# System Server
+arm64.memtag.process.system_server=off
 
 # Render Engine
 debug.hwui.renderer=skiagl
