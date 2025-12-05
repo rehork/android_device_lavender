@@ -113,7 +113,6 @@ debug.renderengine.backend=skiaglthreaded
 debug.hwui.renderer=skiagl
 debug.hwui.skia_atrace_enabled=false
 qemu.sf.lcd_density=420
-vendor.display.disable_scaler=1
 
 # Media
 debug.stagefright.ccodec=1
