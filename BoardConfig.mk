@@ -34,12 +34,14 @@ TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := cortex-a73
 
+ifeq (,$(filter %_64,$(TARGET_PRODUCT)))
 TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a73
+endif
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_power_aware=1 service_locator.enable=1 androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3
@@ -100,6 +102,7 @@ TARGET_USE_QTI_BT_STACK := false
 TARGET_USES_QTI_CAMERA_DEVICE := true
 MALLOC_SVELTE := true
 MALLOC_SVELTE_FOR_LIBC32 := true
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 # Display
 BOARD_USES_ADRENO := true
