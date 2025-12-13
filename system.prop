@@ -70,6 +70,8 @@ persist.log.tag.Tracer=S
 persist.log.tag.NearbySharing=S
 persist.log.tag.IntervalStats=S
 persist.log.tag.CompatibilityChangeReporter=S
+persist.log.tag.QC-time-services=S
+persist.log.tag.ResourcesCompat=S
 persist.log.tag.SQLiteLog=S
 persist.log.tag.wificond=S
 persist.log.tag.b/223498680=S
@@ -83,6 +85,18 @@ persist.log.tag.FastChargingPreferenceController=S
 persist.log.tag.CVP=S
 persist.log.tag.CamX=S
 persist.log.tag.HWUI=S
+persist.log.tag.perf_hint=S
+persist.log.tag.GF_HAL=S
+persist.log.tag.slpi=S
+persist.log.tag.RBS=S
+persist.log.tag.bt_stack=S
+persist.log.tag.cnss-daemon=S
+persist.log.tag.DeviceStatisticsService=S
+persist.log.tag.DrmLibTime=S
+persist.log.tag.ResourcesCompat=S
+persist.log.tag.SYNX-UMD=S
+persist.log.tag.ultrasound_extn=S
+
 
 # Feature flags
 persist.sys.fflag.override.settings_enable_monitor_phantom_procs=false
@@ -99,8 +113,7 @@ persist.vendor.qti.telephony.vt_cam_interface=2
 # Display
 debug.egl.hw=0
 debug.sf.hw=0
-persist.hwc.enable_vds=1
-debug.sf.enable_hwc_vds=1
+debug.sf.enable_hwc_vds=0
 debug.gralloc.gfx_ubwc_disable=1
 debug.gralloc.enable_fb_ubwc=0
 sdm.debug.rotator_disable_ubwc=1
@@ -118,7 +131,6 @@ qemu.sf.lcd_density=420
 debug.stagefright.ccodec=1
 vendor.media.target.version=2
 debug.stagefright.omx_default_rank=0
-ro.media.recorder-max-base-layer-fps=60
 persist.mm.enable.prefetch=true
 mm.enable.smoothstreaming=true
 mm.enable.sec.smoothstreaming=true
