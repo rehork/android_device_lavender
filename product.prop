@@ -7,12 +7,6 @@
 # App
 ro.launcher.blur.appLaunch=0
 
-# App launch prefetching (IORapd)
-ro.iorapd.enable=false
-iorapd.perfetto.enable=false
-iorapd.readahead.enable=false
-persist.device_config.runtime_native_boot.iorap_readahead_enable=false
-
 # Bluetooth
 bluetooth.device.class_of_device=90,2,12
 
@@ -32,15 +26,14 @@ ro.incremental.enable=1
 # FUSE
 persist.sys.fuse.passthrough.enable=true
 
-# LMKD
-ro.lmk.kill_heaviest_task=true
-ro.lmk.kill_timeout_ms=100
-
 
 # Radio
 persist.sys.fflag.override.settings_network_and_internet_v2=true
 persist.vendor.radio.mt_sms_ack=30
 ro.telephony.block_binder_thread_on_incoming_calls=false
+
+# Rendering
+debug.hwui.skia_atrace_enabled=false
 
 # SkiaGL Threaded
 debug.renderengine.backend=skiaglthreaded

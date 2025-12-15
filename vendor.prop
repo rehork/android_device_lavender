@@ -115,6 +115,9 @@ persist.vendor.camera.perflock.enable=0
 persist.vendor.camera.stats.test=0
 persist.sys.camera.camera2=true
 vidc.enc.dcvs.extra-buff-count=3
+persist.vendor.camera.logLevel=0
+persist.vendor.camera.sensor=0
+persist.vendor.camera.logInfoMask=false
 
 
 #add for color invert
@@ -147,25 +150,23 @@ debug.sf.early.sf.duration=16600000
 debug.sf.early.app.duration=16600000
 debug.sf.earlyGl.sf.duration=16600000
 debug.sf.earlyGl.app.duration=16600000
-persist.hwc.enable_vds=0
 debug.gralloc.gfx_ubwc_disable=1
 debug.gralloc.enable_fb_ubwc=0
 sdm.debug.rotator_disable_ubwc=1
-dev.pm.dyn_samplingrate=1
+#dev.pm.dyn_samplingrate=1
 sdm.debug.disable_skip_validate=1
-ro.colorpick_adjust=true
+#ro.colorpick_adjust=true
 vendor.display.disable_skip_validate=1
-debug.sf.enable_hwc_vds=1
+debug.sf.enable_hwc_vds=0
 debug.sf.auto_latch_unsignaled=0
 debug.sf.enable_egl_image_tracker=true
 debug.sf.disable_client_composition_cache=1
 debug.sf.predict_hwc_composition_strategy=0
-debug.sf.disable_backpressure=1
+#debug.sf.disable_backpressure=1
 debug.sf.latch_unsignaled=1
-debug.sf.enable_gl_backpressure=0
+#debug.sf.enable_gl_backpressure=0
 debug.mdpcomp.logs=0
 debug.sf.recomputecrop=0
-debug.sf.frame_rate_multiple_threshold=60
 vendor.display.disable_metadata_dynamic_fps=1
 vendor.display.disable_partial_split=1
 ro.opengles.version=196610
@@ -175,10 +176,9 @@ ro.vendor.display.ad.sdr_calib_data=/data/vendor/display/ad_calib.cfg
 ro.vendor.display.sensortype=2
 ro.vendor.display.cabl=0
 vendor.display.enable_default_color_mode=1
-vendor.display.use_smooth_motion=1
-vendor.gralloc.enable_fb_ubwc=1
+#vendor.display.use_smooth_motion=1
 vendor.display.disable_rotator_downscale=1
-vendor.gralloc.disable_ahardware_buffer=1
+#vendor.gralloc.disable_ahardware_buffer=1
 debug.sf.treat_170m_as_sRGB=1
 persist.demo.hdmirotationlock=false
 vendor.display.disable_hw_recovery_dump=1
@@ -288,6 +288,8 @@ debug.renderengine.backend=skiaglthreaded
 # Smoothens UI
 persist.service.lgospd.enable=0
 
+# Sensors
+persist.vendor.sensors.debug.hal=0
 
 # Surfaceflinger
 ro.surface_flinger.use_color_management=true

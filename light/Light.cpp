@@ -2,17 +2,7 @@
  * Copyright (C) 2018 The Android Open Source Project
  * Copyright (C) 2020 The LineageOS Project
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 // Author := dev_harsh1998, Isaac Chen
@@ -36,8 +26,6 @@ namespace {
 #define LEDS(x) PPCAT(/sys/class/leds, x)
 #define LCD_ATTR(x) STRINGIFY(PPCAT(LEDS(lcd-backlight), x))
 #define WHITE_ATTR(x) STRINGIFY(PPCAT(LEDS(white), x))
-#define BUTTON_ATTR(x) STRINGIFY(PPCAT(LEDS(button-backlight), x))
-#define BUTTON1_ATTR(x) STRINGIFY(PPCAT(LEDS(button-backlight1), x))
 
 using ::android::base::ReadFileToString;
 using ::android::base::WriteStringToFile;
@@ -128,24 +116,6 @@ Light::Light() {
         max_led_brightness_ = kDefaultMaxLedBrightness;
         LOG(ERROR) << "Failed to read max LED brightness, fallback to " << kDefaultMaxLedBrightness;
     }
-
-    if (!access(BUTTON_ATTR(brightness), W_OK)) {
-        lights_.emplace(std::make_pair(Type::BUTTONS,
-                                       [this](auto&&... args) { setLightButtons(args...); }));
-        buttons_.emplace_back(BUTTON_ATTR(brightness));
-
-        if (!access(BUTTON1_ATTR(brightness), W_OK)) {
-            buttons_.emplace_back(BUTTON1_ATTR(brightness));
-        }
-
-        if (ReadFileToString(BUTTON_ATTR(max_brightness), &buf)) {
-            max_button_brightness_ = std::stoi(buf);
-        } else {
-            max_button_brightness_ = kDefaultMaxLedBrightness;
-            LOG(ERROR) << "Failed to read max button brightness, fallback to "
-                       << kDefaultMaxLedBrightness;
-        }
-    }
 }
 
 Return<Status> Light::setLight(Type type, const LightState& state) {
@@ -173,13 +143,6 @@ Return<void> Light::getSupportedTypes(getSupportedTypes_cb _hidl_cb) {
 void Light::setLightBacklight(Type /*type*/, const LightState& state) {
     uint32_t brightness = RgbaToBrightness(state.color, max_screen_brightness_);
     WriteToFile(LCD_ATTR(brightness), brightness);
-}
-
-void Light::setLightButtons(Type /*type*/, const LightState& state) {
-    uint32_t brightness = RgbaToBrightness(state.color, max_button_brightness_);
-    for (auto&& button : buttons_) {
-        WriteToFile(button, brightness);
-    }
 }
 
 void Light::setLightNotification(Type type, const LightState& state) {
