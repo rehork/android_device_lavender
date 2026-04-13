@@ -49,9 +49,9 @@ pm.sleep_mode=1
 debug.cpurend.vsync=false
 
 # Dirac
-ro.audio.soundfx.dirac=true 
-persist.dirac.acs.controller=qem 
-persist.dirac.acs.ignore_error=1 
+ro.audio.soundfx.dirac=true
+persist.dirac.acs.controller=qem
+persist.dirac.acs.ignore_error=1
 persist.dirac.acs.storeSettings=1
 
 # FUSE
@@ -106,7 +106,7 @@ persist.log.tag.android.vending=S
 persist.log.tag.EmojiCompatManager=S
 persist.log.tag.TrafficStats=S
 persist.log.tag.Telecom=S
-persist.log.tag.TelephonyProvider=S 
+persist.log.tag.TelephonyProvider=S
 persist.log.tag.ProcStatsManager=S
 persist.log.tag.Diag_Lib=S
 persist.log.tag.BufferQueueDump=S
@@ -119,7 +119,6 @@ persist.log.tag.GoogleTagManager=S
 persist.log.tag.netstats_mobile_sample=S
 persist.log.tag.stats_log=S
 persist.log.tag.TriggeringPrediction=S
-
 
 # Feature flags
 persist.sys.fflag.override.settings_enable_monitor_phantom_procs=false
@@ -137,9 +136,13 @@ persist.vendor.qti.telephony.vt_cam_interface=2
 debug.egl.hw=0
 debug.sf.hw=0
 debug.sf.enable_hwc_vds=0
-debug.gralloc.gfx_ubwc_disable=1
-debug.gralloc.enable_fb_ubwc=0
+#debug.gralloc.gfx_ubwc_disable=1
+debug.gralloc.enable_fb_ubwc=1
+debug.sf.layer_caching_active_layer_timeout_ms=1000
+debug.sf.disable_client_composition_cache=1
+debug.sf.enable_transaction_tracing=false
 sdm.debug.rotator_disable_ubwc=1
+debug.sf.predict_hwc_composition_strategy=0
 #dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 sdm.debug.disable_skip_validate=1
@@ -149,6 +152,9 @@ debug.renderengine.backend=skiaglthreaded
 debug.hwui.renderer=skiagl
 debug.hwui.skia_atrace_enabled=false
 qemu.sf.lcd_density=420
+debug.sf.enable_egl_image_tracker=1
+vendor.display.disable_rotator_downscale=1
+vendor.display.disable_hw_recovery_dump=1
 
 # Media
 debug.stagefright.ccodec=1
