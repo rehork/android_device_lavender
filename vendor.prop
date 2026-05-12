@@ -257,15 +257,18 @@ persist.vendor.data.mode=concurrent
 persist.vendor.radio.apm_sim_not_pwdn=1
 persist.vendor.radio.atfwd.start=true
 persist.vendor.radio.custom_ecc=1
-#persist.vendor.radio.data_con_rprt=1
+persist.vendor.radio.data_con_rprt=1
 persist.vendor.radio.mt_sms_ack=30
 persist.vendor.radio.rat_on=combine
-#persist.vendor.radio.report_codec=1
+persist.vendor.radio.report_codec=1
 persist.vendor.radio.sib16_support=1
 ro.telephony.block_binder_thread_on_incoming_calls=false
 ro.telephony.default_network=22,22
 ro.vendor.use_data_netmgrd=true
 persist.vendor.ssr.restart_level=ALL_ENABLE
+#persist.vendor.radio.calls.on.ims=1
+#persist.radio.volte.dan_support=true
+#persist.vendor.radio.enableadvancedscan=true
 
 # Sensors
 ro.vendor.sdk.sensors.gestures=false

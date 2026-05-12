@@ -41,6 +41,8 @@ dalvik.vm.systemuicompilerfilter=speed
 persist.data.df.dev_name=rmnet_usb0
 persist.vendor.data.profile_update=true
 persist.data.iwlan.enable=true
+persist.vendor.data.mode=concurrent
+ro.vendor.use_data_netmgrd=true
 
 # Deep Sleep
 pm.sleep_mode=1
@@ -123,11 +125,36 @@ persist.log.tag.TriggeringPrediction=S
 # Feature flags
 persist.sys.fflag.override.settings_enable_monitor_phantom_procs=false
 
+# IMS
+#persist.dbg.ims_volte_enable=1
+persist.data.iwlan.enable=true
+persist.vendor.data.iwlan.enable=true
+persist.dbg.volte_avail_ovr=1
+persist.dbg.vt_avail_ovr=1
+persist.dbg.wfc_avail_ovr=1
+
 # Radio
 DEVICE_PROVISIONED=1
 persist.sys.fflag.override.settings_network_and_internet_v2=true
 ril.subscription.types=NV,RUIM
 telephony.lteOnCdmaDevice=1
+persist.radio.multisim.config=dsds
+persist.vendor.radio.apm_sim_not_pwdn=1
+persist.vendor.radio.custom_ecc=1
+persist.vendor.radio.flexmap_type=none
+persist.vendor.radio.force_on_dc=true
+persist.vendor.radio.procedure_bytes=SKIP
+persist.vendor.radio.rat_on=combine
+persist.vendor.radio.report_codec=1
+persist.vendor.radio.sib16_support=1
+persist.vendor.radio.mt_sms_ack=30
+persist.radio.calls.on.ims=1
+persist.vendor.radio.calls.on.ims=1
+persist.radio.data_con_rprt=1
+#persist.radio.volte.dan_support=true
+#persist.vendor.data.iwlan=1
+#persist.data.iwlan=1
+#persist.vendor.radio.enableadvancedscan=true
 persist.sys.fflag.override.settings_provider_model=false
 ro.telephony.block_binder_thread_on_incoming_calls=false
 persist.vendor.qti.telephony.vt_cam_interface=2
