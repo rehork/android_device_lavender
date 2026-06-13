@@ -46,7 +46,7 @@
     <bool name="config_wifi_softap_ieee80211ac_supported" translatable="false">true</bool>
 
     <!-- Indicates that connected MAC randomization is supported on this device -->
-    <bool name="config_wifi_connected_mac_randomization_supported" translatable="false">true</bool>
+    <bool name="config_wifi_connected_mac_randomization_supported">true</bool>
 
     <!-- Indicates that p2p MAC randomization is supported on this device -->
     <bool name="config_wifi_p2p_mac_randomization_supported" translatable="false">true</bool>
@@ -65,4 +65,7 @@
 
     <!-- Indicate the driver support NL80211_REG_CHANGED event. -->
     <bool name="config_wifiDriverSupportedNl80211RegChangedEvent" translatable="false">true</bool>
+
+    <!-- Wifi driver supports WPA3 Simultaneous Authentication of Equals (WPA3-SAE) for softap -->
+    <bool translatable="false" name="config_wifi_softap_sae_supported">true</bool>
 </resources>

@@ -75,6 +75,7 @@ on fs
     mkdir /mnt/vendor/persist/data 0700 system system
     mkdir /mnt/vendor/persist/bms 0700 root system
     restorecon_recursive /mnt/vendor/persist
+    mkdir /mnt/vendor/persist/secnvm 0770 system system
     write /sys/kernel/boot_adsp/boot 1
 
     mkdir /mnt/vendor/dsp 0770 root root
@@ -126,6 +127,9 @@ on boot
     chmod 0644 /persist/speccfg/vendor_persist.prop
     chmod 0644 /persist/speccfg/submask
     chmod 0644 /persist/speccfg/partition
+
+    # Optimize vfs cache pressure
+    write /proc/sys/vm/vfs_cache_pressure 40
 
 #Create folder dump yuv images while debugging
     mkdir /data/vendor/camera 0770 camera camera
@@ -255,3 +259,8 @@ service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
     class main
     user root
     group system wakelock
+
+on property:sys.boot_completed=1
+    write /proc/sys/vm/page-cluster 0
+    write /proc/sys/vm/swappiness 60
+    swapon_all /vendor/etc/fstab.qcom

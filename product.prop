@@ -26,6 +26,8 @@ ro.incremental.enable=1
 # FUSE
 persist.sys.fuse.passthrough.enable=true
 
+# Phantom process monitoring
+sys.fflag.override.settings_enable_monitor_phantom_procs=false
 
 # Radio
 persist.vendor.radio.enable_temp_dds=true

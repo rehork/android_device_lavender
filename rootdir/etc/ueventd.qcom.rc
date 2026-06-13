@@ -32,7 +32,7 @@ firmware_directories /vendor/firmware_mnt/image/
 
 # the DIAG device node is not world writable/readable.
 /dev/diag                 0666   system     oem_2901
-/dev/mhi_*_pipe_4         0660   system     system
+/dev/mhi_*_pipe_4         0666   system     system
 
 /dev/genlock              0666   system     system
 /dev/wlan                 0660   wifi       wifi
@@ -163,6 +163,7 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/adsprpc-smd-secure   0644   system     system
 /dev/system_health_monitor 0644  radio      system
 /dev/mdss_rotator         0664   system     system
+/dev/cpu_dma_latency      0660   system     system
 
 #QDSS
 /dev/byte-cntr            0660   system    oem_2902
@@ -354,6 +355,7 @@ firmware_directories /vendor/firmware_mnt/image/
 /sys/class/leds/red      delay_off    0640    system    system
 /sys/class/leds/red      breath       0640    system    system
 /sys/class/leds/red      trigger      0640    system    system
+/sys/class/leds/red      max_brightness 0640  system    system
 /sys/class/leds/green    delay_on     0640    system    system
 /sys/class/leds/green    delay_off    0640    system    system
 /sys/class/leds/green    breath       0640    system    system

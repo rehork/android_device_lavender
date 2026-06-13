@@ -97,6 +97,7 @@ bluetooth.hardware.power.operating_voltage_mv=3700
 vendor.qcom.bluetooth.soc=cherokee
 persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aac-aptx-aptxhd-ldac
 persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled=true
+persist.vendor.service.bdroid.sibs=false
 
 # Camera
 vendor.video.disable.ubwc=1
@@ -160,14 +161,12 @@ vendor.display.disable_skip_validate=1
 debug.sf.enable_hwc_vds=0
 debug.sf.auto_latch_unsignaled=0
 debug.sf.enable_egl_image_tracker=true
-debug.sf.disable_client_composition_cache=1
+#debug.sf.disable_client_composition_cache=1
 debug.sf.predict_hwc_composition_strategy=0
-#debug.sf.disable_backpressure=1
 debug.sf.latch_unsignaled=1
 #debug.sf.enable_gl_backpressure=0
 debug.mdpcomp.logs=0
 # Rendering
-debug.egl.hw=1
 debug.enable.sglscale=1
 debug.sf.recomputecrop=0
 #vendor.display.disable_metadata_dynamic_fps=1
@@ -179,10 +178,8 @@ ro.vendor.display.ad.sdr_calib_data=/data/vendor/display/ad_calib.cfg
 ro.vendor.display.sensortype=2
 ro.vendor.display.cabl=0
 vendor.display.enable_default_color_mode=1
-#vendor.display.use_smooth_motion=1
 vendor.display.disable_rotator_downscale=1
 vendor.gralloc.disable_ahardware_buffer=1
-#debug.sf.treat_170m_as_sRGB=1
 persist.demo.hdmirotationlock=false
 vendor.display.disable_hw_recovery_dump=1
 
@@ -244,7 +241,7 @@ ro.telephony.iwlan_operation_mode=legacy
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
-ro.vendor.perf.scroll_opt=true
+#ro.vendor.perf.scroll_opt=true
 
 # Disable Skia tracing by default
 debug.hwui.skia_atrace_enabled=false
@@ -294,6 +291,9 @@ persist.service.lgospd.enable=0
 # Sensors
 persist.vendor.sensors.debug.hal=0
 
+# SSR
+persist.vendor.ssr.restart_level=ALL_ENABLE
+
 # Surfaceflinger
 ro.surface_flinger.use_color_management=true
 debug.performance.tuning=1 
@@ -307,9 +307,6 @@ vendor.usb.rmnet.inst.name=rmnet
 vendor.usb.rndis.func.name=rndis_bam
 vendor.usb.product_string=Redmi Note 7
 vendor.usb.use_gadget_hal=0
-
-# Time
-persist.vendor.delta_time.enable=true
 
 # Zygote
 zygote.critical_window.minute=10
