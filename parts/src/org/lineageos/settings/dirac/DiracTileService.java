@@ -1,7 +1,10 @@
 package org.lineageos.settings.dirac;
 
+import android.content.Context;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
+
+import org.lineageos.settings.R;
 
 public class DiracTileService extends TileService {
 
@@ -9,20 +12,16 @@ public class DiracTileService extends TileService {
 
     @Override
     public void onStartListening() {
-
-        mDiracUtils = new DiracUtils(getApplicationContext());
-
-        boolean enhancerEnabled = mDiracUtils.isDiracEnabled();
+        mDiracUtils = DiracUtils.getInstance(getApplicationContext());
 
         Tile tile = getQsTile();
-        if (enhancerEnabled) {
+        if (mDiracUtils.isDiracEnabled()) {
             tile.setState(Tile.STATE_ACTIVE);
         } else {
             tile.setState(Tile.STATE_INACTIVE);
         }
 
         tile.updateTile();
-
         super.onStartListening();
     }
 

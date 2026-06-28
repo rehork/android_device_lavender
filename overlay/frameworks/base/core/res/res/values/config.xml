@@ -455,4 +455,9 @@
     <!-- Maximum color temperature, in Kelvin, supported by Night display.
          Setting this to track the default color temperature value (currently 6500K). -->
     <integer name="config_nightDisplayColorTemperatureMax">6500</integer>
+    
+    <!-- Whether WM DisplayContent supports high performance transitions
+         (lower-end devices may want to disable) -->
+    <bool name="config_deviceSupportsHighPerfTransitions">false</bool>
+
 </resources>

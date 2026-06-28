@@ -15,22 +15,25 @@
 -->
 <resources>
     <!-- Dirac settings -->
-    <string name="dirac_enable">Używaj optymalizacji dźwięku Mi</string>    
-    <string name="dirac_title">Optymalizacja dźwięku Mi</string>
-    <string name="dirac_summary">Optymalizuj jakość dźwięku z Dirac</string>
-    <string name="dirac_headset_title">Wybierz typ słuchawek</string>
-    <string name="dirac_preset_title">Wybierz konfigurację</string>
-    
-<!-- Dirac settings: Headset types -->
+    <string name="dirac_enable">Włącz Dirac</string>
+    <string name="dirac_title">Wzmacniacz dźwięku</string>
+    <string name="dirac_summary">Optymalizuje jakość dźwięku</string>
+    <string name="dirac_headset_title">Typ słuchawek</string>
+    <string name="dirac_preset_title">Zaprogramowane ustawienia dźwięku</string>
+    <string name="dirac_hifi_enable_title"> Włącz Hi-fi</string>
+    <string name="dirac_hifi_title">Hi-Fi</string>
+    <string name="dirac_hifi_summary">Zmniejsza szumy i zniekształcenia oraz poprawia jakość dźwięku</string>
+
+    <!-- Dirac settings: Headset types -->
     <string name="dirac_headset_default">Domyślne</string>
     <string name="dirac_headset_earbuds">Mi Earbuds</string>
     <string name="dirac_headset_in_ear_2013">Mi In-Ear (2013)</string>
-    <string name="dirac_headset_piston_1">Mi Piston-1</string>
-    <string name="dirac_headset_general">General</string>
+    <string name="dirac_headset_piston_1">Mi Piston 1</string>
+    <string name="dirac_headset_general">General Earbuds</string>
     <string name="dirac_headset_general_inear">General In-Ear</string>
     <string name="dirac_headset_piston_basic">Basic Edition</string>
-    <string name="dirac_headset_piston_2">Mi Piston-2</string>
-    <string name="dirac_headset_piston_standard">Standard Edition</string>
+    <string name="dirac_headset_piston_2">Mi Piston 2</string>
+    <string name="dirac_headset_piston_standard">Mi Piston 3</string>
     <string name="dirac_headset_headphone">Mi Headphones</string>
     <string name="dirac_headset_piston_youth">Youth Edition</string>
     <string name="dirac_headset_piston_color">Color Edition</string>
@@ -44,9 +47,11 @@
     <string name="dirac_headset_in_ear2">Mi In-Ear 2</string>
     <string name="dirac_headset_earphone_basic">Mi Earphones Basic</string>
     <string name="dirac_headset_earphone">Mi Earphones</string>
+    <string name="dirac_headset_ear_four">Mi Quadruple Driver Earphones</string>
+    <string name="dirac_headset_piston_typec">Mi In-Ear Headphones (Type-C)</string>
 
     <!-- Dirac settings: Equalizer presets -->
-    <string name="dirac_preset_default">Domyślna</string>
+    <string name="dirac_preset_default">Domyślnie</string>
     <string name="dirac_preset_rock">Rock</string>
     <string name="dirac_preset_jazz">Jazz</string>
     <string name="dirac_preset_pop">Pop</string>
@@ -57,11 +62,19 @@
     <string name="dirac_preset_country">Country</string>
     <string name="dirac_preset_dance">Dance</string>
     <string name="dirac_preset_metal">Metal</string>
-    <string name="dirac_preset_bass_booster">Wzmocnienie niskich tonów</string>
+    <string name="dirac_preset_bass_booster">Podbicie basu</string>
     <string name="dirac_preset_live">Na żywo</string>
-    <string name="dirac_preset_balanced">Zrównoważona</string>
-    <string name="dirac_preset_bass_reduction">Ograniczenie niskich tonów</string>
-    <string name="dirac_preset_treble_reduction">Ograniczenie wysokich tonów</string>
-    <string name="dirac_preset_soft_bass">Delikatne niskie tony</string>
-    <string name="dirac_preset_soft_treble">Delikatne wysokie tony</string>
+    <string name="dirac_preset_balanced">Zbalansowany</string>
+    <string name="dirac_preset_bass_reduction">Redukcja basu</string>
+    <string name="dirac_preset_treble_reduction">Redukcja wysokich tonów</string>
+    <string name="dirac_preset_soft_bass">Miękki bas</string>
+    <string name="dirac_preset_soft_treble">Miękkie wysokie tony</string>
+
+    <!-- Scene Selection -->
+    <string name="music_headset_scenario_select">Wybierz scenę</string>
+    <string name="music_headset_scenario_intelligent">Inteligentnie</string>
+    <string name="music_headset_scenario_music">Muzyka</string>
+    <string name="music_headset_scenario_video">Wideo</string>
+    <string name="music_headset_scenario_vocal">Głos</string>
+
 </resources>
