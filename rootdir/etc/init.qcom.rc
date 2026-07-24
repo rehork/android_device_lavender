@@ -516,6 +516,7 @@ service vendor.sensors.qti /vendor/bin/sensors.qti
     class core
     user system
     group system
+    task_profiles ServiceCapacityLow
 
 on property:sys.sysctl.tcp_adv_win_scale=*
     write /proc/sys/net/ipv4/tcp_adv_win_scale ${sys.sysctl.tcp_adv_win_scale}
@@ -525,6 +526,7 @@ service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
     user system
     group system inet net_admin wifi
     capabilities NET_ADMIN
+    task_profiles ServiceCapacityLow
 
 on property:sys.shutdown.requested=*
     write /sys/kernel/shutdown_wlan/shutdown 1
@@ -534,7 +536,6 @@ service loc_launcher /system/vendor/bin/loc_launcher
     class late_start
     user gps
     group gps
-
 
 service qcom-sh /vendor/bin/init.qcom.sh
     class late_start

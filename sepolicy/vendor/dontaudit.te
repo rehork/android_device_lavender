@@ -19,3 +19,8 @@ dontaudit priv_app mnt_vendor_file:dir search;
 
 dontaudit hal_wifi_default persist_vendor_debug_wifi_prop:file rw_file_perms;
 dontaudit hal_wifi_default self:capability sys_module;
+dontaudit untrusted_app zygote:unix_stream_socket  getopt;
+dontaudit untrusted_app_25 zygote:unix_stream_socket getopt;
+dontaudit untrusted_app_27 zygote:unix_stream_socket getopt;
+dontaudit untrusted_app_29 zygote:unix_stream_socket getopt;
+dontaudit untrusted_app_30 zygote:unix_stream_socket getopt;

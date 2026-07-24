@@ -242,6 +242,10 @@ ro.telephony.iwlan_operation_mode=legacy
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 #ro.vendor.perf.scroll_opt=true
+persist.sys.perf.scroll_opt=true
+persist.sys.perf.scroll_opt.heavy_app=1
+vendor.perf.framepacing.enable=1
+
 
 # Disable Skia tracing by default
 debug.hwui.skia_atrace_enabled=false
