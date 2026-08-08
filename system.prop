@@ -1,4 +1,5 @@
 # Audio
+audio.safemedia.bypass=true
 audio.offload.min.duration.secs=40
 audio.offload.video=true
 audio.deep_buffer.media=true
@@ -66,6 +67,9 @@ persist.sys.fuse.passthrough.enable=true
 ro.netflix.bsp_rev=Q660-13149-1
 ro.netflix.channel=497730f0-ad4b-11e7-95a4-c7ad113ce187
 ro.netflix.signup=1
+
+# LMKD
+ro.lmk.log_stats=false
 
 # Logs
 persist.log.tag.OpenGLRenderer=S
@@ -188,12 +192,15 @@ debug.stagefright.omx_default_rank=0
 persist.mm.enable.prefetch=true
 mm.enable.smoothstreaming=true
 mm.enable.sec.smoothstreaming=true
-vendor.mm.enable.qcom_parser=13631471
+vendor.mm.enable.qcom_parser=16777213
 persist.mm.enable.prefetch=true
 vidc.enc.target_support_bframe=1
 vendor.vidc.enc.disable_bframes=1
 vendor.vidc.dec.enable.downscalar=0
 vendor.vidc.enc.disable.pq=true
+
+# Multi-Gen LRU
+persist.device_config.mglru_native.lru_gen_config=core
 
 # Disable vsync for cpu rendered apps
 debug.cpurend.vsync=false

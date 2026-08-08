@@ -15,6 +15,15 @@ ro.surface_flinger.supports_background_blur=0
 
 # Camera
 persist.camera.perflock.enable=0
+persist.bokeh.switch.lux=290
+persist.flash.low.lux=390
+persist.imx376_sunny.low.lux=310
+persist.imx376_sunny.light.lux=280
+persist.imx376_ofilm.low.lux=310
+persist.imx376_ofilm.light.lux=280
+ro.eyecare.brightness.threshold=3
+ro.eyecare.brightness.level=8
+ro.hist.brightness.threshold=5
 
 # Charger
 ro.charger.disable_init_blank=true
