@@ -248,7 +248,6 @@
         <item>"/apex/com.android.art/javalib/core-oj.jar"</item>
         <item>"/apex/com.android.art/javalib/core-libart.jar"</item>
         <item>"/system_ext/priv-app/SystemUI/SystemUI.apk"</item>
-        <item>"/system/framework/arm64/boot-telephony-common.art"</item>
         <item>"/system/framework/boot-framework.vdex"</item>
         <item>"/system/framework/ext.jar"</item>
         <item>"/system/framework/framework.jar"</item>
@@ -256,7 +255,6 @@
         <item>"/system/framework/oat/arm64/services.odex"</item>
         <item>"/system/framework/oat/arm64/services.vdex"</item>
         <item>"/system/framework/services.jar"</item>
-        <item>"/system/framework/telephony-common.jar"</item>
         <item>"/system/lib/libEGL.so"</item>
         <item>"/system/lib/libGLESv1_CM.so"</item>
         <item>"/system/lib/libGLESv2.so"</item>
@@ -295,6 +293,8 @@
         <item>"/vendor/lib64/libllvm-qcom.so"</item>
     </string-array>
 
+    <!-- Should the pinner service pin the Home application? -->
+    <bool name="config_pinnerHomeApp">true</bool>
 
     <!-- Indicate whether closing the lid causes the device to go to sleep and opening
          it causes the device to wake up.
@@ -377,6 +377,9 @@
    <!-- Enable SMS authorization support -->
    <bool name="config_sms_authorization_enabled">true</bool>
 
+    <!-- The name of the package that will hold the dialer role by default. -->
+   <string name="config_defaultDialer" translatable="false">org.codeaurora.dialer</string>
+
    <!-- When true use the linux /dev/input/event subsystem to detect the switch changes
    on the headphone/microphone jack. When false use the older uevent framework -->
    <bool name="config_useDevInputEventForAudioJack">true</bool>
@@ -407,9 +410,6 @@
     <string-array name="config_biometric_sensors" translatable="false" >
         <item>0:2:15</item> <!-- ID0:Fingerprint:Strong -->
     </string-array>
-
-    <!-- If not zero, limits the internal screen recorder's framerate to the set value. -->
-    <integer name="config_screenRecorderMaxFramerate">60</integer>
 
     <!-- See AmbientSensor.AmbientColorTemperatureSensor. The ambient color temperature sensor name. -->
     <string name="config_displayWhiteBalanceColorTemperatureSensorName">com.google.sensor.color</string>

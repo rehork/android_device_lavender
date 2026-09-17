@@ -23,7 +23,6 @@ persist.vendor.camera.expose.aux=1
 persist.vendor.camera.HAL3.enabled=1
 persist.radio.VT_CAM_INTERFACE=2
 persist.vendor.qti.telephony.vt_cam_interface=2
-vidc.enc.dcvs.extra-buff-count=3
 persist.sys.camera.camera2=true
 persist.vendor.camera.awb.sync=2
 
@@ -46,13 +45,14 @@ persist.vendor.data.mode=concurrent
 ro.vendor.use_data_netmgrd=true
 
 # Deep Sleep
-pm.sleep_mode=1
+#pm.sleep_mode=1
 
 # Disable vsync for cpu rendered apps
 debug.cpurend.vsync=false
 
 # Dirac
 ro.audio.soundfx.dirac=true
+persist.audio.dirac.speaker=false
 persist.dirac.acs.controller=qem
 persist.dirac.acs.ignore_error=1
 persist.dirac.acs.storeSettings=1
@@ -70,6 +70,17 @@ ro.netflix.signup=1
 
 # LMKD
 ro.lmk.log_stats=false
+ro.lmk.downgrade_pressure=60
+ro.lmk.filecache_min_kb=153600
+ro.lmk.kill_timeout_ms=100
+ro.lmk.lowmem_min_oom_score=801
+ro.lmk.psi_complete_stall_ms=150
+ro.lmk.psi_partial_stall_ms=200
+ro.lmk.stall_limit_critical=40
+ro.lmk.swap_free_low_percentage=20
+ro.lmk.swap_util_max=90
+ro.lmk.thrashing_limit=30
+ro.lmk.thrashing_limit_decay=50
 
 # Logs
 persist.log.tag.OpenGLRenderer=S
@@ -139,6 +150,7 @@ persist.vendor.data.iwlan.enable=true
 persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1
 persist.dbg.wfc_avail_ovr=1
+persist.vendor.ims.disableUserAgent=0
 
 # Radio
 DEVICE_PROVISIONED=1
@@ -166,12 +178,8 @@ persist.vendor.qti.telephony.vt_cam_interface=2
 debug.egl.hw=0
 debug.sf.hw=0
 debug.sf.enable_hwc_vds=0
-#debug.gralloc.gfx_ubwc_disable=1
 debug.gralloc.enable_fb_ubwc=1
-debug.sf.layer_caching_active_layer_timeout_ms=1000
-#debug.sf.disable_client_composition_cache=1
 debug.sf.enable_transaction_tracing=false
-sdm.debug.rotator_disable_ubwc=1
 debug.sf.predict_hwc_composition_strategy=0
 persist.demo.hdmirotationlock=false
 sdm.debug.disable_skip_validate=1

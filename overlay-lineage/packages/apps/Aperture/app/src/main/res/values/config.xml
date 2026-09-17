@@ -44,5 +44,6 @@
         <!-- No additional configuration is added by default. -->
         <item>0</item> <item>sd|hd|fhd|uhd</item>     <item>60</item>  <!-- main -->
         <item>1</item> <item>sd|hd|fhd</item>     <item>60</item> <!-- front -->
+        <item>2</item> <item>sd|hd|fhd</item>     <item>30</item> <!-- front 2nd -->
     </string-array>
 </resources>
