@@ -74,12 +74,6 @@ on boot
     chmod 0640 /sys/class/leds/white/delay_off
     chmod 0640 /sys/class/leds/white/breath
 
-    # Power supply
-    chown system system /sys/class/power_supply/battery/input_suspend
-    chown system system /sys/class/power_supply/battery/charging_enabled
-    chmod 0660 /sys/class/power_supply/battery/input_suspend
-    chmod 0660 /sys/class/power_supply/battery/charging_enabled
-
     # Thermal
     chown system system /sys/class/power_supply/battery/device/thermalcall
     chmod 0770 /sys/class/power_supply/battery/device/thermalcall

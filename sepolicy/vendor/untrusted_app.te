@@ -21,3 +21,5 @@ allow untrusted_app untrusted_app:udp_socket ioctl;
 allow untrusted_app tmpfs:lnk_file { read };
 
 dontaudit untrusted_app system_file:file lock;
+get_prop(untrusted_app, qemu_sf_lcd_density_prop)
+get_prop(untrusted_app, qemu_hw_prop)

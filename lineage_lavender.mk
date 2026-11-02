@@ -18,6 +18,8 @@ $(call inherit-product, $(LOCAL_PATH)/device.mk)
 # CrDroid Flags
 TARGET_ENABLE_BLUR := false
 
+# Boot animation
+TARGET_BOOTANIMATION_HALF_RES := true
 
 # Device identifier
 PRODUCT_NAME := lineage_lavender

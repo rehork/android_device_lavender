@@ -102,23 +102,19 @@ persist.vendor.service.bdroid.sibs=false
 # Camera
 vendor.video.disable.ubwc=1
 persist.vendor.camera.preview.ubwc=0
-persist.vendor.camera.isp.clock.optmz=0
 persist.vendor.camera.isp.turbo=1
 persist.vendor.camera.imglib.usefdlite=1
 persist.vendor.camera.expose.aux=1
 persist.vendor.camera.HAL3.enabled=1
-persist.vendor.camera.thirdpartyeis_enabled=1
-persist.vendor.camera.isp.dualisp=1
 persist.vendor.camera.manufacturer=Xiaomi
 persist.vendor.camera.model=Redmi Note 7
-persist.vendor.camera.awb.sync=2
-persist.vendor.camera.perflock.enable=0
 persist.vendor.camera.stats.test=0
-persist.sys.camera.camera2=true
 persist.vendor.camera.logLevel=0
-persist.vendor.camera.sensor=0
 persist.vendor.camera.logInfoMask=false
-
+persist.sys.camera.camera2=true
+persist.vendor.camera.awb.sync=2
+persist.radio.VT_CAM_INTERFACE=2
+persist.vendor.camera.perflock.enable=0
 
 #add for color invert
 ro.vendor.df.effect.conflict=1
@@ -158,7 +154,6 @@ vendor.gralloc.enable_fb_ubwc=1
 ro.colorpick_adjust=true
 vendor.display.disable_skip_validate=1
 debug.sf.enable_hwc_vds=0
-debug.sf.enable_gl_backpressure=0
 debug.sf.auto_latch_unsignaled=1
 debug.sf.enable_egl_image_tracker=true
 debug.sf.predict_hwc_composition_strategy=0
@@ -172,10 +167,6 @@ vendor.display.enable_default_color_mode=1
 vendor.display.disable_rotator_downscale=1
 persist.demo.hdmirotationlock=false
 vendor.display.disable_hw_recovery_dump=1
-
-# Disable vsync for cpu rendered apps
-debug.cpurend.vsync=false
-
 # DPM
 persist.vendor.dpm.loglevel=0
 
@@ -195,20 +186,96 @@ ro.vendor.qti.va_aosp.support=1
 # GPS
 persist.backup.ntpServer="0.pool.ntp.org"
 
-# Graphics
-ro.hardware.egl=adreno
-ro.hardware.vulkan=adreno
-vendor.opengles.version=196610
 
 # Hwui
 debug.hwui.use_hint_manager=true
-debug.hwui.target_cpu_time_percent=30
+debug.hwui.target_cpu_time_percent=70
 
 # Incremental FS
 ro.incremental.enable=1
 
 # Keystore
 ro.hardware.keystore_desede=true
+
+# Logging
+persist.log.tag.QC2Buf=S
+persist.log.tag.QC2V4l2Codec=S
+persist.log.tag.QTIPowerHAL=S
+setprop persist.log.tag.ANDR-PERF-REQUEST S
+setprop persist.log.tag.ANDR-PERF-MPCTL S
+setprop persist.log.tag.QTI_PowerHAL S
+persist.log.tag.statsd=S
+persist.log.tag.WifiVendorHal=S
+persist.log.tag.AudioPolicyConfig=S
+persist.log.tag.AudioPolicyService=S
+persist.log.tag.DisplayFeatureHal=S
+persist.log.tag.qti_sensors_hal=S
+persist.log.tag.BluetoothAdapterService=S
+persist.log.tag.OpenGLRenderer=S
+persist.log.tag.artd=S
+persist.log.tag.AnalyticsService=S
+persist.log.tag.KernelCpuUidActiveTimeReader=S
+persist.log.tag.ArtService=s
+persist.log.tag.Tracer=S
+persist.log.tag.allocator3=S
+persist.log.tag.allocator4=S
+persist.log.tag.TcUtil=S
+persist.log.tag.Gralloc3=S
+persist.log.tag.Gralloc4=S
+persist.log.tag.TaskPersister=S
+persist.log.tag.NearbySharing=S
+persist.log.tag.IntervalStats=S
+persist.log.tag.CompatibilityChangeReporter=S
+persist.log.tag.QC-time-services=S
+persist.log.tag.ResourcesCompat=S
+persist.log.tag.SQLiteLog=S
+persist.log.tag.wificond=S
+persist.log.tag.b/223498680=S
+persist.log.tag.TrafficStats=S
+persist.log.tag.ContrastColorUtil=S
+persist.log.tag.hwcomposer=S
+persist.log.tag.SYNX-UMD=S
+persist.log.tag.CHIUSECASE=S
+persist.log.tag.ResourcesCompat=S
+persist.log.tag.FastChargingPreferenceController=S
+persist.log.tag.CVP=S
+persist.log.tag.CamX=S
+persist.log.tag.HWUI=S
+persist.log.tag.perf_hint=S
+persist.log.tag.GF_HAL=S
+persist.log.tag.slpi=S
+persist.log.tag.RBS=S
+persist.log.tag.bt_stack=S
+persist.log.tag.BatteryManagerService=S
+persist.log.tag.BatteryService=S
+persist.log.tag.BatteryStats=S
+persist.log.tag.batt_chg=S
+persist.log.tag.cnss-daemon=S
+persist.log.tag.DeviceStatisticsService=S
+persist.log.tag.DrmLibTime=S
+persist.log.tag.ResourcesCompat=S
+persist.log.tag.SYNX-UMD=S
+persist.log.tag.ultrasound_extn=S
+persist.log.tag.GoogleInputMethodService=S
+persist.log.tag.RIL-DATA=S
+persist.log.tag.android.vending=S
+persist.log.tag.EmojiCompatManager=S
+persist.log.tag.TrafficStats=S
+persist.log.tag.Telecom=S
+persist.log.tag.TelephonyProvider=S
+persist.log.tag.ProcStatsManager=S
+persist.log.tag.Diag_Lib=S
+persist.log.tag.BufferQueueDump=S
+persist.log.tag.TelephonyConf=S
+persist.log.tag.TelephonyConn=S
+persist.log.tag.TeleConnService=S
+persist.log.tag.Phone=S
+persist.log.tag.DataSubSelector=S
+persist.log.tag.GoogleTagManager=S
+persist.log.tag.netstats_mobile_sample=S
+persist.log.tag.stats_log=S
+persist.log.tag.TriggeringPrediction=S
+
 
 # HEH filename encryption is being dropped
 ro.crypto.volume.filenames_mode=aes-256-cts
@@ -281,6 +348,9 @@ ro.vendor.sensors.pmd=true
 ro.vendor.sensors.sta_detect=true
 ro.vendor.sensors.mot_detect=true
 ro.vendor.sensors.smd=false
+ro.vendor.sensors.pocket=false
+ro.vendor.sensors.pickup=false
+persist.vendor.sensors.debug.hal=0
 
 # Set system properties identifying the chipset
 ro.soc.manufacturer=Qualcomm
@@ -292,9 +362,6 @@ debug.renderengine.backend=skiaglthreaded
 
 # Smoothens UI
 persist.service.lgospd.enable=0
-
-# Sensors
-persist.vendor.sensors.debug.hal=0
 
 # SSR
 persist.vendor.ssr.restart_level=ALL_ENABLE

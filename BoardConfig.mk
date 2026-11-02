@@ -100,6 +100,7 @@ TARGET_USE_QTI_BT_STACK := false
 TARGET_USES_QTI_CAMERA_DEVICE := true
 MALLOC_SVELTE := true
 MALLOC_SVELTE_FOR_LIBC32 := true
+TARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED := true
 TARGET_NEEDS_RAW10_BUFFER_FIX := true
 
 # Display
@@ -131,7 +132,7 @@ TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH := /sys/class/power_supply/battery/
 
 # HIDL
 DEVICE_FRAMEWORK_MANIFEST_FILE := $(DEVICE_PATH)/framework_manifest.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml \
     vendor/lineage/config/device_framework_matrix.xml \
     $(DEVICE_PATH)/device_framework_compatibility_matrix.xml
